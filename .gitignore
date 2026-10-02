@@ -1,0 +1,9 @@
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+.qodo/
+
+# private guide (not published to the website)
+Portfolio_Guide.pdf

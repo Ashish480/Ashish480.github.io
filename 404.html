@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Ashish Shajan</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      var a = null;
+      try { a = localStorage.getItem('accent'); } catch (e) {}
+      if (a) document.documentElement.setAttribute('data-accent', a);
+    })();
+  </script>
+  <style>
+    .lost { min-height: 100dvh; display: grid; place-items: center; text-align: center; padding: 32px 16px; }
+    .lost__code { color: var(--accent); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .lost h1 { margin-top: 18px; font-size: clamp(2.4rem, 7vw, 4.5rem); font-weight: 600; letter-spacing: -0.045em; line-height: 1; }
+    .lost p { max-width: 44ch; margin: 18px auto 0; color: var(--text-2); }
+    .lost .btn { margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <main class="lost">
+    <div>
+      <p class="lost__code mono">Error 404 · Localization lost</p>
+      <h1>This page went off the map.</h1>
+      <p>The robot couldn't find a route to that address. Let's get you back to known territory.</p>
+      <a class="btn btn--primary" href="/">Return home</a>
+    </div>
+  </main>
+</body>
+</html>

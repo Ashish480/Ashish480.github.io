@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- ===== SEO ===== -->
+  <title>Ashish Shajan — Robotics &amp; Autonomous Systems Engineer</title>
+  <meta name="description" content="Portfolio of Ashish Shajan — robotics and autonomous systems engineer, CTO at AT Bots, building a semi-humanoid robot, and former autonomy lead of Team Equinox's Level-2 autonomous BAJA vehicle. ROS 2, PX4, SLAM, sensor fusion and AI.">
+  <meta name="author" content="Ashish Shajan">
+  <meta name="keywords" content="Ashish Shajan, robotics engineer, autonomous systems, ROS 2, PX4, SLAM, sensor fusion, computer vision, AT Bots, Team Equinox, BAJA, Kerala">
+  <link rel="canonical" href="https://ashish480.github.io/">
+  <meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)">
+
+  <!-- Social share preview (LinkedIn, WhatsApp, X, Slack…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ashish480.github.io/">
+  <meta property="og:title" content="Ashish Shajan — Robotics &amp; Autonomous Systems Engineer">
+  <meta property="og:description" content="A semi-humanoid robot at AT Bots, autonomous inspection drones and a Level-2 autonomous BAJA vehicle — from simulation to real-world deployment.">
+  <meta property="og:image" content="https://ashish480.github.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ashish Shajan — Robotics &amp; Autonomous Systems Engineer">
+  <meta name="twitter:description" content="A semi-humanoid robot at AT Bots, autonomous inspection drones and a Level-2 autonomous BAJA vehicle — from simulation to real-world deployment.">
+  <meta name="twitter:image" content="https://ashish480.github.io/assets/img/og-image.png">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- ===== Fonts & styles ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Apply the saved light/dark theme before the page paints (prevents a flash) -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      var a = null;
+      try { a = localStorage.getItem('accent'); } catch (e) {}
+      if (a) document.documentElement.setAttribute('data-accent', a);
+      document.documentElement.classList.add('js');
+      // safety net: if main.js fails to load, never leave content hidden
+      setTimeout(function () { if (!window.__portfolioReady) document.documentElement.classList.remove('js'); }, 3000);
+    })();
+  </script>
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- Structured data: helps Google show your name, role and profiles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ashish Shajan",
+    "url": "https://ashish480.github.io/",
+    "image": "https://ashish480.github.io/assets/img/portrait.webp",
+    "jobTitle": "Robotics & Autonomous Systems Engineer",
+    "worksFor": { "@type": "Organization", "name": "AT Bots" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Saintgits College of Engineering" },
+    "address": { "@type": "PostalAddress", "addressRegion": "Kerala", "addressCountry": "IN" },
+    "email": "mailto:ashishshajan480@gmail.com",
+    "sameAs": [
+      "https://github.com/Ashish480",
+      "https://www.linkedin.com/in/ashish-shajan-65743a1b7/"
+    ],
+    "knowsAbout": ["Robotics", "ROS 2", "PX4", "SLAM", "Sensor Fusion", "Computer Vision", "Autonomous Vehicles", "Reinforcement Learning"]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- ===== Icon sprite (used with <svg><use href="#i-name"/></svg>) ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></g></symbol>
+      <symbol id="i-arrow-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></g></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></g></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></g></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></g></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></g></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></g></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></g></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></g></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9h16M4 15h16"/></g></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></g></symbol>
+      <symbol id="i-expand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></g></symbol>
+      <symbol id="i-chevron-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></g></symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></g></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.2a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></g></symbol>
+      <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ================================================================
+       NAVIGATION
+       ================================================================ -->
+  <header class="nav" data-nav>
+    <div class="container nav__inner">
+      <a href="#top" class="brand" aria-label="Ashish Shajan — back to top">
+        <span class="brand__mark" aria-hidden="true">AS</span>
+        <span class="brand__name">Ashish Shajan</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#recognition">Recognition</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <div class="palette" data-palette>
+          <button class="icon-btn" type="button" data-palette-toggle aria-expanded="false" aria-controls="palette-menu" aria-label="Choose accent colour">
+            <span class="palette__current" aria-hidden="true"></span>
+          </button>
+          <div class="palette__menu" id="palette-menu" role="menu" hidden>
+            <p class="palette__title mono">Accent</p>
+            <div class="palette__swatches">
+              <button type="button" role="menuitemradio" data-accent-choice="orange" aria-label="Signal orange"><span style="--sw:#ff6b2c"></span></button>
+              <button type="button" role="menuitemradio" data-accent-choice="blue" aria-label="Electric blue"><span style="--sw:#4f8cff"></span></button>
+              <button type="button" role="menuitemradio" data-accent-choice="emerald" aria-label="Emerald"><span style="--sw:#34d399"></span></button>
+              <button type="button" role="menuitemradio" data-accent-choice="violet" aria-label="Violet"><span style="--sw:#a78bfa"></span></button>
+              <button type="button" role="menuitemradio" data-accent-choice="amber" aria-label="Amber"><span style="--sw:#f5b83d"></span></button>
+            </div>
+          </div>
+        </div>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to light theme">
+          <svg class="icon icon--sun"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon"><use href="#i-moon"/></svg>
+        </button>
+        <a class="btn btn--ghost btn--sm nav__resume" href="assets/Ashish_Shajan_Resume.pdf" target="_blank" rel="noopener">
+          Résumé <svg class="icon"><use href="#i-arrow-up-right"/></svg>
+        </a>
+        <button class="icon-btn nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <svg class="icon icon--menu"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close"><use href="#i-close"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+      <nav class="container" aria-label="Mobile">
+        <a href="#work"><span class="mono">01</span>Work</a>
+        <a href="#about"><span class="mono">02</span>About</a>
+        <a href="#experience"><span class="mono">03</span>Experience</a>
+        <a href="#skills"><span class="mono">04</span>Skills</a>
+        <a href="#recognition"><span class="mono">05</span>Recognition</a>
+        <a href="#contact"><span class="mono">06</span>Contact</a>
+        <a class="btn btn--primary" href="assets/Ashish_Shajan_Resume.pdf" target="_blank" rel="noopener">Download résumé <svg class="icon"><use href="#i-download"/></svg></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================================================================
+         HERO
+         ================================================================ -->
+    <section class="hero" id="top">
+      <canvas class="hero__scan" data-lidar aria-hidden="true"></canvas>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>
+            Chief Technical Officer at AT Bots
+          </p>
+
+          <h1 class="hero__title">Ashish Shajan<span class="hero__dot">.</span></h1>
+          <p class="hero__role">Robotics &amp; Autonomous Systems Engineer</p>
+
+          <p class="hero__lead">
+            I build machines that perceive, decide and move: autonomous drones that inspect
+            infrastructure, a Level-2 autonomous BAJA vehicle, legged robots and, right now, a
+            semi-humanoid robot at AT Bots. I take each one from simulation to real-world deployment.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#work">
+              View selected work <svg class="icon"><use href="#i-arrow-down"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="assets/Ashish_Shajan_Resume.pdf" download>
+              Download résumé <svg class="icon"><use href="#i-download"/></svg>
+            </a>
+          </div>
+
+          <ul class="hero__social" aria-label="Profiles">
+            <li><a href="https://github.com/Ashish480" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon"><use href="#i-github"/></svg><span>GitHub</span></a></li>
+            <li><a href="https://www.linkedin.com/in/ashish-shajan-65743a1b7/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
+            <li><a href="mailto:ashishshajan480@gmail.com" aria-label="Email"><svg class="icon"><use href="#i-mail"/></svg><span>Email</span></a></li>
+          </ul>
+        </div>
+
+        <figure class="portrait">
+          <div class="portrait__frame">
+            <img src="assets/img/portrait.webp" alt="Portrait of Ashish Shajan" width="640" height="640" fetchpriority="high">
+          </div>
+          <span class="portrait__badge"><svg class="icon"><use href="#i-pin"/></svg>Kottayam, Kerala</span>
+          <figcaption class="portrait__card">
+            <span class="portrait__label mono">Currently building</span>
+            <span class="portrait__title">Semi-humanoid robot</span>
+            <span class="portrait__sub">AT Bots · in development</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="container">
+        <ul class="creds" aria-label="Current and past roles">
+          <li><span class="creds__org">AT Bots</span><span class="creds__role">Chief Technical Officer</span></li>
+          <li><span class="creds__org">Team Equinox · SAE BAJA</span><span class="creds__role">Autonomous Head &amp; Captain · 2025–26</span></li>
+          <li><span class="creds__org">IIIT Hyderabad · RRC</span><span class="creds__role">Research Intern</span></li>
+          <li><span class="creds__org">Intel Unnati</span><span class="creds__role">Industrial Training Intern</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SELECTED WORK
+         To add a project: copy one <article class="project">…</article>
+         block, change the text and point the images at new files in
+         assets/img/projects/.
+         ================================================================ -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span>01</span> Selected work</p>
+          <div>
+            <h2 class="section-title" id="work-title">Autonomy, from simulation<br class="br-lg"> <em>to the real world.</em></h2>
+            <p class="section-intro">Six flagship builds across ground, aerial and legged robotics and applied AI. Each one went from model and simulation through integration and testing, with real hardware as the goal.</p>
+          </div>
+        </header>
+
+        <!-- ── Now building (update this card as the project grows) ── -->
+        <aside class="now reveal" aria-label="Current project">
+          <span class="now__status mono"><span class="status-dot" aria-hidden="true"></span>In progress</span>
+          <div class="now__body">
+            <p class="now__label mono">Now building · AT Bots</p>
+            <h3 class="now__title">Semi-Humanoid Robot</h3>
+            <p class="now__text">I'm leading development of AT Bots' semi-humanoid robot, bringing together the perception, control and
+            sim-to-real experience from the drone, BAJA and quadruped projects below. A full case study will be added as the robot matures.</p>
+          </div>
+        </aside>
+
+        <div class="projects">
+
+          <!-- ── Project 01 · BAJA ─────────────────────────────── -->
+          <article class="project reveal" id="project-baja">
+            <div class="project__media">
+              <button class="media media--main" type="button" data-gallery="baja" data-caption="Team Equinox with the A12 vehicle at SAE BAJA India">
+                <img src="assets/img/projects/equinox-team.webp" alt="Team Equinox members posing with their BAJA vehicle, number A12" width="1380" height="874" loading="lazy">
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+              <div class="media__row">
+                <button class="media" type="button" data-gallery="baja" data-caption="Adaptive Cruise Control following a lead vehicle in CARLA">
+                  <img src="assets/img/projects/carla-acc.webp" alt="CARLA simulation of adaptive cruise control with speed and following-distance readout" width="742" height="557" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+                <button class="media" type="button" data-gallery="baja" data-caption="Traffic-light perception test in CARLA (Town10HD)">
+                  <img src="assets/img/projects/carla-traffic.webp" alt="CARLA city intersection with traffic lights and vehicle telemetry overlay" width="1280" height="722" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project__body">
+              <p class="project__meta mono"><span class="project__index">01</span><span>Autonomous vehicles</span><span>2025 — 2026</span></p>
+              <h3 class="project__title">Level-2 Autonomous BAJA Vehicle</h3>
+              <p class="project__org">Team Equinox · SAE BAJA India — <strong>Autonomous Head (2025) · Autonomous Head &amp; Captain (2026)</strong></p>
+              <p class="project__summary">Across two aBAJA SAEINDIA seasons I led the autonomy program for an all-terrain vehicle built from the ground up, competing in Lane Keep Assist, Autonomous Emergency Braking and Endurance events. In 2025 I was Autonomous Head; in 2026 I also captained the team, leading the mechanical, electrical, embedded and AI sub-teams to track readiness. The stack runs on ROS&nbsp;2 Humble on an NVIDIA Jetson Orin Nano.</p>
+              <dl class="stats">
+                <div><dt>30 Hz</dt><dd>Unified LKA + AEB control loop</dd></div>
+                <div><dt>100 Hz</dt><dd>EKF vehicle-state estimation</dd></div>
+                <div><dt>~8×</dt><dd>Compute headroom for lane keeping on the Jetson*</dd></div>
+              </dl>
+              <ul class="project__points">
+                <li><strong>Drive-by-wire in C++:</strong> a ROS&nbsp;2 node that commands throttle, brake and steering over CAN and reads actuator and dashboard feedback every 20&nbsp;ms.</li>
+                <li><strong>Radar perception:</strong> decodes automotive-radar CAN frames with a DBC file and filters tracks with confirmation and miss thresholds, publishing them as custom <code>RadarTrack</code> messages.</li>
+                <li><strong>AEB and ACC:</strong> a fuzzy-logic braking controller driven by time-to-collision, plus a safety-gated state machine that brakes when an obstacle enters an 8&nbsp;m × 2&nbsp;m danger zone. ACC uses a PID time-gap controller.</li>
+                <li><strong>Lane keeping:</strong> a classical CV pipeline (bird's-eye warp, sliding-window search, polynomial fit) feeding Stanley / PID steering. I prototyped it in CARLA with Ultra-Fast Lane Detection, then validated it in IPG CarMaker&nbsp;15.</li>
+                <li><strong>Localization:</strong> EKF fusion of IMU, wheel encoders and steering encoder through <code>robot_localization</code>.</li>
+              </ul>
+              <p class="project__note">*Estimated in the team's hardware-compatibility report (≈4.2&nbsp;ms per frame against a 33&nbsp;ms budget).</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>ROS 2 Humble</li><li>Jetson Orin Nano</li><li>C++</li><li>CAN / DBC</li><li>Radar</li><li>EKF</li><li>Fuzzy logic</li><li>Stanley</li><li>OpenCV</li><li>CARLA</li><li>IPG CarMaker</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-arrow" href="https://github.com/Ashish480/equinox26_ws" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Vehicle workspace <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="link-arrow" href="https://github.com/Ashish480/Carla_abaja" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>CARLA ADAS prototypes <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="link-arrow" href="https://github.com/Ashish480/IPG-models" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>IPG CarMaker models <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 02 · Crack detection ──────────────────── -->
+          <article class="project reveal" id="project-crack">
+            <div class="project__media">
+              <button class="media media--main media--contain" type="button" style="--ar: 1500 / 507" data-gallery="crack" data-caption="Crack Detection &amp; Analysis Report: input image, predicted mask and quantified result">
+                <img src="assets/img/projects/crack-report.webp" alt="Three-panel report showing a concrete surface, the predicted crack mask, and the analysed crack" width="1500" height="507" loading="lazy">
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+              <div class="media__row media__row--3">
+                <button class="media" type="button" style="--ar: 1 / 1" data-gallery="crack" data-caption="Crack quantified at 482.8 mm length × 21.1 mm width, 30.7° orientation">
+                  <img src="assets/img/projects/crack-measure-1.webp" alt="Concrete crack outlined in green with length, width and angle annotations" width="256" height="255" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+                <button class="media" type="button" style="--ar: 1 / 1" data-gallery="crack" data-caption="Segmentation on a real-world surface crack">
+                  <img src="assets/img/projects/crack-measure-2.webp" alt="Real pavement crack segmented and measured" width="256" height="255" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+                <button class="media" type="button" style="--ar: 1 / 1" data-gallery="crack" data-caption="Autonomous inspection orbit around a structure (PyBullet)">
+                  <img src="assets/img/projects/drone-pybullet.webp" alt="Simulated quadcopter orbiting a building for inspection" width="1024" height="777" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project__body">
+              <p class="project__meta mono"><span class="project__index">02</span><span>Aerial inspection · AI</span><span>2024</span></p>
+              <h3 class="project__title">AI Crack Detection with Autonomous Drones</h3>
+              <p class="project__org">Academic project — <strong>Project Lead &amp; System Architect</strong></p>
+              <p class="project__summary">An automated structural-inspection system. An autonomous PX4 drone flies inspection patterns around a structure while an edge-optimized deep-learning model finds cracks and measures them in real time. It feeds directly into AT Bots' AI-powered structural-inspection work.</p>
+              <dl class="stats">
+                <div><dt>40K</dt><dd>Concrete images in the training dataset</dd></div>
+                <div><dt>L · W · θ</dt><dd>Length, width and angle reported per crack</dd></div>
+                <div><dt>Edge</dt><dd>Model tuned for on-board inference</dd></div>
+              </dl>
+              <ul class="project__points">
+                <li><strong>Pixel-level crack segmentation</strong> with a DeepCrack-style network in PyTorch (hierarchical features built on Holistically-Nested Edge Detection), trained on the METU concrete-crack dataset.</li>
+                <li><strong>Crack quantification:</strong> contour analysis turns each mask into length, width, orientation and area, then renders a three-panel inspection report. A React web interface shows the results.</li>
+                <li><strong>Optimized for the edge</strong> by trading inference latency against accuracy so it can run on resource-constrained on-board hardware.</li>
+                <li><strong>Autonomous flight</strong> on PX4 + MAVROS + ROS&nbsp;2, with inspection orbits prototyped in PyBullet and Gazebo. I led the AI, embedded and flight-control teams through integration.</li>
+              </ul>
+              <ul class="tags" aria-label="Technologies">
+                <li>PyTorch</li><li>DeepCrack / HED</li><li>Segmentation</li><li>OpenCV</li><li>React</li><li>Edge AI</li><li>PX4</li><li>MAVROS</li><li>ROS 2</li><li>PyBullet</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- ── Project 03 · Drone stack ──────────────────────── -->
+          <article class="project reveal" id="project-drone">
+            <div class="project__media">
+              <button class="media media--main" type="button" data-gallery="drone" data-caption="QGroundControl: failsafe falls back to position control after the offboard signal is lost">
+                <img src="assets/img/projects/drone-failsafe.webp" alt="QGroundControl map view showing a failsafe warning during a simulated flight" width="1354" height="811" loading="lazy">
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+              <div class="media__row">
+                <button class="media" type="button" data-gallery="drone" data-caption="PX4 x500 airframe in Gazebo Sim">
+                  <img src="assets/img/projects/drone-x500.webp" alt="Quadcopter model rendered in Gazebo" width="579" height="540" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+                <button class="media" type="button" data-gallery="drone" data-caption="Offboard trajectory traced in RViz">
+                  <img src="assets/img/projects/drone-trajectory.webp" alt="Green spiral flight path above a grid in RViz" width="670" height="660" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project__body">
+              <p class="project__meta mono"><span class="project__index">03</span><span>Aerial autonomy</span><span>2024 — Present</span></p>
+              <h3 class="project__title">ROS 2 Autonomous Drone Stack</h3>
+              <p class="project__org">AT Bots — <strong>Chief Technical Officer</strong></p>
+              <p class="project__summary">The flight-software foundation for AT Bots' AI-powered inspection drones: a ROS&nbsp;2 stack on PX4 and MAVROS for real-time control and navigation, hardened through simulation and failsafe testing.</p>
+              <dl class="stats">
+                <div><dt>3</dt><dd>Sensor streams fused: IMU, GNSS, LiDAR</dd></div>
+                <div><dt>uXRCE</dt><dd>DDS bridge between PX4 and ROS&nbsp;2</dd></div>
+                <div><dt>GPS-out</dt><dd>Failure injection and recovery tests</dd></div>
+              </dl>
+              <ul class="project__points">
+                <li><strong>PX4 offboard control</strong> from ROS&nbsp;2 over uXRCE-DDS (<code>px4_msgs</code>) and MAVROS for autonomous take-off, trajectory tracking and landing.</li>
+                <li><strong>Multi-sensor fusion</strong> of IMU, GNSS and LiDAR for accurate localization and obstacle avoidance.</li>
+                <li><strong>GPS-failsafe research:</strong> a ROS&nbsp;2 node that injects GPS failures into the PX4 sensor stream, detects the loss, and switches to GPS-denied navigation or return mode. I logged position, velocity and attitude to compare nominal and failure flights.</li>
+                <li>SITL validation in Gazebo and QGroundControl, including lost-offboard-link scenarios that fall back to position control.</li>
+              </ul>
+              <ul class="tags" aria-label="Technologies">
+                <li>PX4</li><li>MAVROS</li><li>ROS 2</li><li>uXRCE-DDS</li><li>Gazebo</li><li>QGroundControl</li><li>Sensor fusion</li><li>C++</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-arrow" href="https://github.com/Ashish480/px4sim4startup" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>PX4 simulation setup <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 04 · Quadruped ────────────────────────── -->
+          <article class="project reveal" id="project-quadruped">
+            <div class="project__media">
+              <button class="media media--main" type="button" data-gallery="quad" data-caption="Quadruped in a Gazebo warehouse world">
+                <img src="assets/img/projects/quadruped-warehouse.webp" alt="Yellow quadruped robot walking between warehouse shelves in Gazebo" width="1400" height="761" loading="lazy">
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+              <div class="media__row">
+                <button class="media" type="button" data-gallery="quad" data-caption="Gait test on flat ground">
+                  <img src="assets/img/projects/quadruped-sim.webp" alt="Quadruped robot mid-stride on a grey simulation floor" width="730" height="470" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+                <button class="media" type="button" data-gallery="quad" data-caption="12-DOF robot model in RViz">
+                  <img src="assets/img/projects/quadruped-rviz.webp" alt="Quadruped robot model standing in RViz" width="525" height="640" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project__body">
+              <p class="project__meta mono"><span class="project__index">04</span><span>Legged robotics</span><span>2024</span></p>
+              <h3 class="project__title">12-DOF Quadruped Locomotion</h3>
+              <p class="project__org">Academic project — <strong>ROS 2 · Isaac Sim · Gazebo</strong></p>
+              <p class="project__summary">A modular ROS&nbsp;2 locomotion framework for a 12-DOF quadruped. It covers kinematics, gait generation and balance control, and was validated in high-fidelity physics before moving to hardware.</p>
+              <dl class="stats">
+                <div><dt>12</dt><dd>Actuated joints, 3 per leg</dd></div>
+                <div><dt>3</dt><dd>Controllers: stand, crawl, trot</dd></div>
+                <div><dt>2</dt><dd>Simulators: Isaac Sim and Gazebo</dd></div>
+              </dl>
+              <ul class="project__points">
+                <li><strong>Per-leg inverse kinematics</strong> and body transformations for precise foot-trajectory planning and stable stance control.</li>
+                <li><strong>Modular gait controllers</strong> (stand, crawl and trot) behind a state-command interface, with real-time joint synchronization through <strong>ros2_control</strong> and ramped joypad teleoperation.</li>
+                <li><strong>IMU-based PID stabilization</strong> for posture correction on uneven terrain, tuned to cut oscillation and save energy.</li>
+                <li>Robot modelled in xacro / URDF and exported to USD for <strong>NVIDIA Isaac Sim</strong>, where I analysed joint torques and stability margins. A MoveIt configuration supports leg motion planning.</li>
+              </ul>
+              <ul class="tags" aria-label="Technologies">
+                <li>ROS 2</li><li>ros2_control</li><li>Kinematics</li><li>Gait planning</li><li>IMU</li><li>Isaac Sim</li><li>Gazebo</li><li>MoveIt</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-arrow" href="https://github.com/Ashish480/quadruped-Isaacsim" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Isaac Sim quadruped <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="link-arrow" href="https://github.com/Ashish480/moveitquadmini" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>MoveIt configuration <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 05 · SLAM robot ───────────────────────── -->
+          <article class="project reveal" id="project-slam">
+            <div class="project__media project__media--duo">
+              <button class="media" type="button" style="--ar: 1 / 1" data-gallery="slam" data-caption="Robot pose, TF frames and LiDAR scan registered on the map in RViz">
+                <img src="assets/img/projects/slam-map.webp" alt="RViz occupancy grid with the robot's footprint and coordinate frames" width="918" height="767" loading="lazy">
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+              <button class="media" type="button" style="--ar: 1 / 1" data-gallery="slam" data-caption="Occupancy-grid map growing from live 2D LiDAR scans">
+                <img src="assets/img/projects/slam-map-2.webp" alt="Partially built occupancy-grid map radiating out from the robot" width="885" height="841" loading="lazy">
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+            </div>
+
+            <div class="project__body">
+              <p class="project__meta mono"><span class="project__index">05</span><span>Mobile robotics</span><span>2024 — 25</span></p>
+              <h3 class="project__title">Differential-Drive SLAM Robot</h3>
+              <p class="project__org">Robotics Research Centre, IIIT Hyderabad — <strong>Research Intern</strong></p>
+              <p class="project__summary">A custom autonomous mobile robot built from scratch on a Raspberry Pi and RPLiDAR that maps real indoor environments with 2D LiDAR SLAM.</p>
+              <ul class="project__points">
+                <li><strong>Cartographer-based 2D LiDAR SLAM</strong> that produces high-resolution occupancy-grid maps.</li>
+                <li>Real-time <strong>differential-drive kinematics</strong> and wheel-odometry estimation for precise localization.</li>
+                <li>Hardware-in-the-loop testing and PID tuning for stable, accurate tracking, validated in structured indoor spaces.</li>
+              </ul>
+              <ul class="tags" aria-label="Technologies">
+                <li>ROS 2</li><li>Cartographer</li><li>SLAM</li><li>RPLiDAR</li><li>Raspberry Pi</li><li>Odometry</li><li>PID</li><li>HITL</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-arrow" href="https://github.com/Ashish480/slamiiith" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>SLAM workspace <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 06 · Carbon Bytes ─────────────────────── -->
+          <article class="project reveal" id="project-carbon">
+            <div class="project__media">
+              <button class="media media--main" type="button" data-gallery="carbon" data-caption="Carbon Bytes web app: recycling dashboard, smart-bin QR scanning and rewards">
+                <img src="assets/img/projects/carbon-bytes.webp" alt="Carbon Bytes web app home page reading 'Turn Your Waste Into Rewards' with impact statistics" width="1400" height="737" loading="lazy">
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+            </div>
+
+            <div class="project__body">
+              <p class="project__meta mono"><span class="project__index">06</span><span>AI · IoT · Sustainability</span><span>2025</span></p>
+              <h3 class="project__title">Carbon Bytes: AI Waste Segregation</h3>
+              <p class="project__org">Award-winning build — <strong>3rd place, Vruthi 2025 Wasteathon (₹25,000)</strong></p>
+              <p class="project__summary">An end-to-end system that tackles poor waste segregation in India. Smart bins classify waste with computer vision, sort it automatically, and reward people for disposing of it properly.</p>
+              <dl class="stats">
+                <div><dt>4</dt><dd>Waste classes: plastic, paper, organic, hazardous</dd></div>
+                <div><dt>YOLOv8</dt><dd>Custom-trained detector, plus a TensorFlow classifier</dd></div>
+                <div><dt>Live</dt><dd>Web app with dashboard and leaderboard</dd></div>
+              </dl>
+              <ul class="project__points">
+                <li><strong>AI classification</strong> with a custom-trained YOLOv8 model and a TensorFlow classifier running on images captured inside the bin.</li>
+                <li><strong>ESP32 smart bins</strong> that actuate segregation from the model output and report status to Firebase in real time.</li>
+                <li><strong>Gamified recycling:</strong> users scan a bin's QR code, earn eco-points and climb a leaderboard. Analytics track recycling efficiency and environmental impact.</li>
+              </ul>
+              <ul class="tags" aria-label="Technologies">
+                <li>YOLOv8</li><li>TensorFlow</li><li>OpenCV</li><li>ESP32</li><li>Firebase</li><li>FastAPI</li><li>Python</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-arrow" href="https://carbon-bytes-32bde.web.app/" target="_blank" rel="noopener">Live web app <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="link-arrow" href="https://github.com/Ashish480/Hacksus" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Source code <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ── More builds ────────────────────────────────────── -->
+        <div class="more">
+          <div class="more__head reveal">
+            <h3 class="more__title">More builds</h3>
+            <a class="link-arrow" href="https://github.com/Ashish480?tab=repositories" target="_blank" rel="noopener">All repositories on GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+
+          <div class="mini-grid">
+            <article class="mini reveal">
+              <p class="mini__label mono">Vehicle simulation</p>
+              <h4 class="mini__title"><a href="https://github.com/Ashish480/Abaja-simulation" target="_blank" rel="noopener">BAJA Ackermann Simulation</a></h4>
+              <p class="mini__text">Our BAJA buggy exported from CAD to URDF, with a C++ Ackermann steering controller in Gazebo and a USD model for Isaac Sim.</p>
+              <ul class="tags tags--sm"><li>URDF</li><li>C++</li><li>Gazebo</li><li>Isaac Sim</li></ul>
+              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Research · IIIT Hyderabad</p>
+              <h4 class="mini__title"><a href="https://github.com/Ashish480/IIITH-assignment" target="_blank" rel="noopener">Mobile Manipulator</a></h4>
+              <p class="mini__text">A robot arm on a mobile base, modelled in URDF with ros2_control arm and joint-state controllers in Gazebo and RViz.</p>
+              <ul class="tags tags--sm"><li>ROS 2</li><li>ros2_control</li><li>URDF</li><li>Gazebo</li></ul>
+              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Mentoring · AT Bots</p>
+              <h4 class="mini__title"><a href="https://github.com/Ashish480/Interns_AI_ML" target="_blank" rel="noopener">ROS 2 &amp; AI/ML Intern Curriculum</a></h4>
+              <p class="mini__text">Training material I built for AT Bots interns: a ROS&nbsp;2 robot (arm, LiDAR and wheel packages) and a YOLOv8 pipeline from frame extraction through labelling, training and inference.</p>
+              <ul class="tags tags--sm"><li>ROS 2</li><li>YOLOv8</li><li>Teaching</li></ul>
+              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Perception · ADAS</p>
+              <h4 class="mini__title"><a href="https://github.com/Ashish480/baja2_ws" target="_blank" rel="noopener">Lane &amp; Sensor Nodes for BAJA</a></h4>
+              <p class="mini__text">Ultra-Fast Lane Detection wrapped as a ROS&nbsp;2 node with a custom LaneData message, plus serial IMU and ultrasonic sensor publishers.</p>
+              <ul class="tags tags--sm"><li>UFLD</li><li>ROS 2</li><li>IMU</li></ul>
+              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Hackathon · Team lead</p>
+              <h4 class="mini__title"><a href="https://github.com/Ashish480/Guidedog" target="_blank" rel="noopener">Supermarket Guide Dog</a></h4>
+              <p class="mini__text">Team Innovox's ROS&nbsp;2 + Gazebo robot dog that navigates a simulated supermarket and recognises products with OpenCV.</p>
+              <ul class="tags tags--sm"><li>ROS 2</li><li>Gazebo</li><li>OpenCV</li></ul>
+              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Machine learning</p>
+              <h4 class="mini__title"><a href="https://github.com/Ashish480/Heartattackprediction" target="_blank" rel="noopener">Heart-Attack Risk Analysis</a></h4>
+              <p class="mini__text">Analysis of a ~300-patient clinical dataset with K-means clustering, decision trees and logistic regression to surface the strongest risk indicators.</p>
+              <ul class="tags tags--sm"><li>scikit-learn</li><li>Pandas</li><li>ML</li></ul>
+              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Perception</p>
+              <h4 class="mini__title"><a href="https://github.com/Ashish480/Trafficsign" target="_blank" rel="noopener">Traffic-Sign Dataset Tooling</a></h4>
+              <p class="mini__text">A video region-of-interest tool for capturing labelled traffic and speed-limit sign datasets.</p>
+              <ul class="tags tags--sm"><li>OpenCV</li><li>Datasets</li><li>Python</li></ul>
+              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Control</p>
+              <h4 class="mini__title">Manipulator &amp; Self-Balancing Robot</h4>
+              <p class="mini__text">A robot arm and a self-balancing platform built on the NI roboRIO controller.</p>
+              <ul class="tags tags--sm"><li>roboRIO</li><li>PID</li><li>Control</li></ul>
+            </article>
+            <article class="mini reveal">
+              <p class="mini__label mono">Embedded</p>
+              <h4 class="mini__title">Underwater Surveillance System</h4>
+              <p class="mini__text">A mini project to build a surveillance system for underwater monitoring.</p>
+              <ul class="tags tags--sm"><li>Embedded</li><li>Sensing</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         ABOUT
+         ================================================================ -->
+    <section class="section section--alt" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <div class="about__intro reveal">
+          <p class="section-label mono"><span>02</span> About</p>
+          <h2 class="section-title" id="about-title">Engineer by training, <em>systems thinker</em> by habit.</h2>
+          <div class="about__text">
+            <p>I'm a Robotics &amp; Automation engineer from Kerala, India. I trained at Saintgits College of Engineering and now serve as CTO of AT Bots. My work sits where AI meets hardware: perception, sensor fusion, navigation and control, plus the integration work that makes them run together on a real machine.</p>
+            <p>I lead teams the way I build robots: modular, test-driven and simulation-first. As Team Equinox's Autonomous Head for two BAJA seasons, and captain in 2026, I coordinated mechanical, electrical, embedded and AI engineers around a single autonomy roadmap. At AT Bots I now lead our semi-humanoid robot and mentor intern batches in ROS&nbsp;2 and AI/ML.</p>
+          </div>
+          <dl class="langs">
+            <div><dt>English</dt><dd>Professional</dd></div>
+            <div><dt>Malayalam</dt><dd>Native</dd></div>
+            <div><dt>Hindi</dt><dd>Intermediate</dd></div>
+          </dl>
+        </div>
+
+        <ol class="approach" aria-label="How I work">
+          <li class="approach__step reveal">
+            <span class="approach__num mono">01</span>
+            <div>
+              <h3>Model &amp; simulate</h3>
+              <p>Kinematics, dynamics and digital twins in Gazebo, Isaac Sim, CARLA and IPG CarMaker before any hardware moves.</p>
+            </div>
+          </li>
+          <li class="approach__step reveal">
+            <span class="approach__num mono">02</span>
+            <div>
+              <h3>Integrate &amp; fuse</h3>
+              <p>Modular ROS&nbsp;2 nodes, EKF sensor fusion and PX4 / CAN interfaces that turn perception, planning and control into one system.</p>
+            </div>
+          </li>
+          <li class="approach__step reveal">
+            <span class="approach__num mono">03</span>
+            <div>
+              <h3>Validate &amp; deploy</h3>
+              <p>Hardware-in-the-loop tests, PID tuning and failsafe scenarios, followed by real-world trials on the track, in the field and in the air.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         EXPERIENCE
+         ================================================================ -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span>03</span> Experience</p>
+          <div>
+            <h2 class="section-title" id="experience-title">Where I've <em>built.</em></h2>
+            <p class="section-intro">Leadership roles at a robotics startup and a competition team, backed by research and industry training.</p>
+          </div>
+        </header>
+
+        <ol class="timeline">
+          <li class="role reveal">
+            <div class="role__when mono">2024 — Present</div>
+            <div class="role__body">
+              <h3 class="role__title">Chief Technical Officer</h3>
+              <p class="role__org">AT Bots <span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Kerala, India</span></p>
+              <ul class="role__points">
+                <li>Architected a ROS&nbsp;2 autonomous drone stack integrating PX4 and MAVROS for real-time flight control and navigation.</li>
+                <li>Designed multi-sensor fusion pipelines (IMU, GNSS, LiDAR) for accurate localization and obstacle avoidance.</li>
+                <li>Directed system-level validation, simulation testing (Gazebo, PyBullet) and hardware deployment for AI-powered structural inspection.</li>
+                <li>Leading development of AT Bots' semi-humanoid robot (in progress).</li>
+                <li>Mentor intern batches in ROS&nbsp;2 and AI/ML.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="role reveal">
+            <div class="role__when mono">2025 — 2026</div>
+            <div class="role__body">
+              <h3 class="role__title">Autonomous Head &amp; Captain</h3>
+              <p class="role__org">Team Equinox · SAE BAJA India <span class="role__loc"><span class="mono role__tenure">2025 Autonomous Head · 2026 Autonomous Head &amp; Captain</span></span><span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Kottayam, India</span></p>
+              <ul class="role__points">
+                <li>Led end-to-end development of a Level-2 autonomous BAJA vehicle over two seasons, owning the technical roadmap, milestones and competition strategy.</li>
+                <li>As 2026 captain, coordinated the mechanical, electrical, embedded and AI teams for seamless hardware–software integration.</li>
+                <li>Architected a modular ROS&nbsp;2 stack: radar perception, EKF localization and ACC / AEB / LKA control.</li>
+                <li>Ran simulation workflows in Gazebo, CARLA and IPG CarMaker, then real-time integration and performance tuning on track.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="role reveal">
+            <div class="role__when mono">2024</div>
+            <div class="role__body">
+              <h3 class="role__title">Research Intern</h3>
+              <p class="role__org">Robotics Research Centre, IIIT Hyderabad <span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Hyderabad, India</span></p>
+              <ul class="role__points">
+                <li>Developed high-fidelity Gazebo environments to validate autonomous drone control strategies before hardware testing.</li>
+                <li>Engineered a custom mobile robot from scratch with 2D LiDAR SLAM producing high-resolution occupancy-grid maps.</li>
+                <li>Built real-time differential-drive kinematics and wheel-odometry pipelines, and ran HITL testing and PID tuning.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="role reveal">
+            <div class="role__when mono">2024</div>
+            <div class="role__body">
+              <h3 class="role__title">Intern, Intel Unnati Industrial Training</h3>
+              <p class="role__org">Intel Corporation <span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Bangalore, India</span></p>
+              <ul class="role__points">
+                <li>Selected for Intel's national-level industrial training program in advanced AI and data-driven systems.</li>
+                <li>Built data-preprocessing, feature-engineering and model-validation pipelines to improve predictive performance.</li>
+                <li>Presented technical findings and solution strategies through structured reports and demonstrations.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SKILLS
+         ================================================================ -->
+    <section class="section section--alt" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span>04</span> Toolkit</p>
+          <div>
+            <h2 class="section-title" id="skills-title">The stack I <em>work in.</em></h2>
+            <p class="section-intro">The tools I use most, from embedded hardware up to AI models and simulation.</p>
+          </div>
+        </header>
+
+        <div class="skills">
+          <div class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="mono">01</span> Robotics &amp; navigation</h3>
+            <ul class="chips">
+              <li>Autonomous vehicles</li><li>Control systems</li><li>Inverse kinematics</li><li>Mobile robots</li><li>Differential-drive kinematics</li><li>Nav2</li><li>LiDAR SLAM</li><li>Localization</li><li>Odometry</li><li>Sensor fusion (EKF)</li><li>Stanley &amp; PID control</li><li>Fuzzy-logic control</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="mono">02</span> AI &amp; machine learning</h3>
+            <ul class="chips">
+              <li>Deep learning</li><li>Computer vision</li><li>PyTorch</li><li>YOLOv8</li><li>U-Net++</li><li>EfficientNet</li><li>Reinforcement learning</li><li>Model optimization</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="mono">03</span> Frameworks &amp; middleware</h3>
+            <ul class="chips">
+              <li>ROS 2</li><li>PX4 Autopilot</li><li>MAVROS</li><li>micro-ROS</li><li>uXRCE-DDS</li><li>ros2_control</li><li>robot_localization</li><li>MoveIt</li><li>RViz</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="mono">04</span> Simulation</h3>
+            <ul class="chips">
+              <li>Gazebo</li><li>NVIDIA Isaac Sim</li><li>CARLA</li><li>IPG CarMaker</li><li>PyBullet</li><li>MATLAB / Simulink</li><li>QGroundControl</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="mono">05</span> Embedded systems</h3>
+            <ul class="chips">
+              <li>ESP32</li><li>Raspberry Pi</li><li>Teensy</li><li>Jetson</li><li>PID control</li><li>Trajectory generation</li><li>CAN bus / DBC</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="mono">06</span> Programming &amp; tools</h3>
+            <ul class="chips">
+              <li>Python</li><li>C++</li><li>Embedded C</li><li>Linux</li><li>Git</li><li>Docker</li><li>PlatformIO</li><li>React</li><li>Firebase</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         RECOGNITION & EDUCATION
+         ================================================================ -->
+    <section class="section" id="recognition" aria-labelledby="recognition-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span>05</span> Recognition</p>
+          <div>
+            <h2 class="section-title" id="recognition-title">Awards &amp; <em>education.</em></h2>
+          </div>
+        </header>
+
+        <div class="awards">
+          <article class="award reveal">
+            <p class="award__rank">3<sup>rd</sup></p>
+            <div>
+              <h3 class="award__title">Vruthi 2025 — Clean Kerala Conclave Wasteathon</h3>
+              <p class="award__text">Awarded ₹25,000 for an AI-powered waste-segregation solution.</p>
+            </div>
+          </article>
+          <article class="award reveal">
+            <p class="award__rank">3<sup>rd</sup></p>
+            <div>
+              <h3 class="award__title">National Hackathon — Rajagiri School of Engineering</h3>
+              <p class="award__text">Recognised for innovative robotics solutions.</p>
+            </div>
+          </article>
+          <article class="award reveal">
+            <p class="award__rank award__rank--mono mono">INTEL</p>
+            <div>
+              <h3 class="award__title">Intel Unnati Industrial Training</h3>
+              <p class="award__text">Selected for the national two-month industrial training program in AI.</p>
+            </div>
+          </article>
+          <article class="award reveal">
+            <p class="award__rank award__rank--mono mono">NPTEL</p>
+            <div>
+              <h3 class="award__title">NPTEL Certification</h3>
+              <p class="award__text">Soft Skill Development.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="education">
+          <article class="edu reveal">
+            <p class="edu__when mono">2022 — 2026</p>
+            <h3 class="edu__degree">B.Tech in Robotics &amp; Automation</h3>
+            <p class="edu__school">Saintgits College of Engineering (Autonomous), Kottayam, Kerala</p>
+            <ul class="chips chips--sm" aria-label="Relevant coursework">
+              <li>Control Systems</li><li>Robot Kinematics &amp; Dynamics</li><li>Artificial Intelligence</li><li>Machine Learning</li><li>Embedded Systems</li><li>Computer Vision</li><li>Mobile Robots</li><li>Robot Operating System</li>
+            </ul>
+          </article>
+          <article class="edu reveal">
+            <p class="edu__when mono">Higher secondary</p>
+            <h3 class="edu__degree">Jawahar Navodaya Vidyalaya</h3>
+            <p class="edu__school">Wayanad, Kerala</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CONTACT
+         ================================================================ -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact__card reveal">
+          <p class="section-label mono"><span>06</span> Contact</p>
+          <h2 class="contact__title" id="contact-title">Let's build something<br class="br-lg"> <em>that moves.</em></h2>
+          <p class="contact__text">Hiring for robotics, autonomy or perception, or have a hard problem that needs a robot? I'd love to hear about it.</p>
+
+          <div class="contact__email">
+            <a class="contact__address" href="mailto:ashishshajan480@gmail.com">ashishshajan480@gmail.com</a>
+            <button class="icon-btn icon-btn--lg" type="button" data-copy="ashishshajan480@gmail.com" aria-label="Copy email address">
+              <svg class="icon icon--copy"><use href="#i-copy"/></svg>
+              <svg class="icon icon--check"><use href="#i-check"/></svg>
+            </button>
+          </div>
+
+          <div class="contact__links">
+            <a class="btn btn--primary" href="mailto:ashishshajan480@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Send an email</a>
+            <a class="btn btn--ghost" href="https://www.linkedin.com/in/ashish-shajan-65743a1b7/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-linkedin"/></svg>LinkedIn</a>
+            <a class="btn btn--ghost" href="https://github.com/Ashish480" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>GitHub</a>
+            <a class="btn btn--ghost" href="assets/Ashish_Shajan_Resume.pdf" download><svg class="icon"><use href="#i-download"/></svg>Résumé</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span data-year>2026</span> Ashish Shajan</p>
+      <p class="footer__clock mono" aria-live="off"><svg class="icon"><use href="#i-pin"/></svg>Kerala, India · <span data-clock>--:--</span> IST</p>
+      <a class="footer__top" href="#top">Back to top <svg class="icon"><use href="#i-arrow-up"/></svg></a>
+    </div>
+  </footer>
+
+  <!-- Image viewer (opens when a project image is clicked) -->
+  <dialog class="lightbox" data-lightbox aria-label="Image viewer">
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+      <figcaption class="lightbox__caption">
+        <span class="lightbox__text"></span>
+        <span class="lightbox__count mono"></span>
+      </figcaption>
+    </figure>
+    <button class="icon-btn lightbox__btn lightbox__close" type="button" data-lb-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
+    <button class="icon-btn lightbox__btn lightbox__prev" type="button" data-lb-prev aria-label="Previous image"><svg class="icon"><use href="#i-chevron-left"/></svg></button>
+    <button class="icon-btn lightbox__btn lightbox__next" type="button" data-lb-next aria-label="Next image"><svg class="icon"><use href="#i-chevron-right"/></svg></button>
+  </dialog>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+</body>
+</html>
