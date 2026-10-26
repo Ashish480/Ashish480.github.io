@@ -1834,3 +1834,7 @@ figure.media--video { cursor: zoom-in; }
 .feature-award .stats { margin-top: 20px; }
 .feature-award .link-arrow { margin-top: 20px; }
 @media (max-width: 960px) { .feature-award { grid-template-columns: 1fr; } }
+
+.award__thumb { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; padding: 6px 14px 6px 6px; border: 1px solid var(--line-2); border-radius: 12px; background: transparent; color: var(--text); font-size: 0.85rem; cursor: zoom-in; transition: border-color 0.2s var(--ease); }
+.award__thumb:hover { border-color: var(--text-3); }
+.award__thumb img { width: 84px; height: 56px; object-fit: cover; border-radius: 8px; }
