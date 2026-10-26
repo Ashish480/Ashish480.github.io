@@ -10,8 +10,8 @@
   <meta name="author" content="Ashish Shajan">
   <meta name="keywords" content="Ashish Shajan, robotics engineer, autonomous systems, ROS 2, PX4, SLAM, sensor fusion, computer vision, AT Bots, Team Equinox, BAJA, Kerala">
   <link rel="canonical" href="https://ashish480.github.io/">
-  <meta name="theme-color" content="#080a0f" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
 
   <!-- Social share preview (LinkedIn, WhatsApp, X, Slack…) -->
   <meta property="og:type" content="website">
@@ -42,11 +42,8 @@
     (function () {
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      if (!t) t = 'dark';
       document.documentElement.setAttribute('data-theme', t);
-      var a = null;
-      try { a = localStorage.getItem('accent'); } catch (e) {}
-      if (a && a !== 'cobalt' && a !== 'blue') document.documentElement.setAttribute('data-accent', a);
       document.documentElement.classList.add('js');
       // safety net: if main.js fails to load, never leave content hidden
       setTimeout(function () { if (!window.__portfolioReady) document.documentElement.classList.remove('js'); }, 3000);
@@ -124,22 +121,6 @@
       </nav>
 
       <div class="nav__actions">
-        <div class="palette" data-palette>
-          <button class="icon-btn" type="button" data-palette-toggle aria-expanded="false" aria-controls="palette-menu" aria-label="Choose accent colour">
-            <span class="palette__current" aria-hidden="true"></span>
-          </button>
-          <div class="palette__menu" id="palette-menu" role="menu" hidden>
-            <p class="palette__title mono">Accent</p>
-            <div class="palette__swatches">
-              <button type="button" role="menuitemradio" data-accent-choice="cobalt" aria-label="Cobalt blue"><span style="--sw:#5b8cff"></span></button>
-              <button type="button" role="menuitemradio" data-accent-choice="teal" aria-label="Teal"><span style="--sw:#2dd4bf"></span></button>
-              <button type="button" role="menuitemradio" data-accent-choice="orange" aria-label="Signal orange"><span style="--sw:#ff6b2c"></span></button>
-              <button type="button" role="menuitemradio" data-accent-choice="emerald" aria-label="Emerald"><span style="--sw:#34d399"></span></button>
-              <button type="button" role="menuitemradio" data-accent-choice="violet" aria-label="Violet"><span style="--sw:#a78bfa"></span></button>
-              <button type="button" role="menuitemradio" data-accent-choice="amber" aria-label="Amber"><span style="--sw:#f5b83d"></span></button>
-            </div>
-          </div>
-        </div>
         <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to light theme">
           <svg class="icon icon--sun"><use href="#i-sun"/></svg>
           <svg class="icon icon--moon"><use href="#i-moon"/></svg>

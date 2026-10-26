@@ -15,26 +15,26 @@
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
 
-  --bg: #080a0f;
-  --bg-alt: #0b0e14;
-  --surface: #10141b;
-  --surface-2: #161b24;
+  --bg: #0a0a0a;
+  --bg-alt: #0e0e0e;
+  --surface: #141414;
+  --surface-2: #1b1b1b;
   --line: rgba(255, 255, 255, 0.075);
   --line-2: rgba(255, 255, 255, 0.14);
-  --text: #eeeff1;
-  --text-2: #a7adb5;
-  --text-3: #7f858e;
-  --ok: #3ddc84;
-  --nav-bg: rgba(8, 9, 11, 0.7);
+  --text: #f5f5f5;
+  --text-2: #a3a3a3;
+  --text-3: #8a8a8a;
+  --ok: #e5e5e5;
+  --nav-bg: rgba(10, 10, 10, 0.72);
   --scan-dim: rgba(238, 239, 241, 0.15);
   --shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 30px 60px -30px rgba(0, 0, 0, 0.75);
-  --glow-strength: 16%;
+  --glow-strength: 5%;
   --grain-opacity: 0.05;
 
-  /* default accent: cobalt blue */
-  --accent: #5b8cff;
-  --accent-2: #8fb0ff;
-  --accent-ink: #050a16;
+  /* monochrome accent: white on black */
+  --accent: #ffffff;
+  --accent-2: #bdbdbd;
+  --accent-ink: #0a0a0a;
 
   --radius: 18px;
   --radius-sm: 12px;
@@ -47,45 +47,34 @@
 }
 
 [data-theme="light"] {
-  --bg: #f6f7f9;
-  --bg-alt: #eef0f4;
+  --bg: #fafafa;
+  --bg-alt: #f2f2f2;
   --surface: #ffffff;
-  --surface-2: #f2f4f7;
+  --surface-2: #f4f4f4;
   --line: rgba(15, 17, 20, 0.08);
   --line-2: rgba(15, 17, 20, 0.16);
-  --text: #0e1013;
-  --text-2: #4b5159;
-  --text-3: #686e77;
-  --ok: #15965a;
-  --nav-bg: rgba(245, 244, 240, 0.78);
+  --text: #0a0a0a;
+  --text-2: #4a4a4a;
+  --text-3: #6b6b6b;
+  --ok: #171717;
+  --nav-bg: rgba(250, 250, 250, 0.8);
   --scan-dim: rgba(14, 16, 19, 0.15);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 28px 50px -30px rgba(20, 22, 26, 0.25);
-  --glow-strength: 10%;
+  --glow-strength: 4%;
   --grain-opacity: 0.035;
 
-  --accent: #1d4ed8;
-  --accent-2: #3b6cf0;
+  --accent: #0a0a0a;
+  --accent-2: #3d3d3d;
   --accent-ink: #ffffff;
 
   color-scheme: light;
 }
 
 /* Accent themes (picked from the palette menu in the nav) */
-[data-accent="teal"]                         { --accent: #2dd4bf; --accent-2: #7eeadb; --accent-ink: #03140f; }
-[data-theme="light"][data-accent="teal"]     { --accent: #0f766e; --accent-2: #14958a; --accent-ink: #ffffff; }
-[data-accent="orange"]                       { --accent: #ff6b2c; --accent-2: #ffa05c; --accent-ink: #0a0b0d; }
-[data-theme="light"][data-accent="orange"]   { --accent: #c2410c; --accent-2: #ea580c; --accent-ink: #ffffff; }
-[data-accent="emerald"]                      { --accent: #34d399; --accent-2: #7ee8bf; --accent-ink: #04140d; }
-[data-theme="light"][data-accent="emerald"]  { --accent: #047857; --accent-2: #0a9a6f; --accent-ink: #ffffff; }
-[data-accent="violet"]                       { --accent: #a78bfa; --accent-2: #c9b8ff; --accent-ink: #0d0819; }
-[data-theme="light"][data-accent="violet"]   { --accent: #6d28d9; --accent-2: #8b5cf6; --accent-ink: #ffffff; }
-[data-accent="amber"]                        { --accent: #f5b83d; --accent-2: #ffd27a; --accent-ink: #140e02; }
-[data-theme="light"][data-accent="amber"]    { --accent: #a14b06; --accent-2: #c2620a; --accent-ink: #ffffff; }
-
 /* tints derived from whichever accent is active */
 :root {
-  --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
-  --accent-line: color-mix(in srgb, var(--accent) 38%, transparent);
+  --accent-soft: color-mix(in srgb, var(--accent) 8%, transparent);
+  --accent-line: color-mix(in srgb, var(--accent) 45%, transparent);
   --accent-glow: color-mix(in srgb, var(--accent) var(--glow-strength), transparent);
 }
 
@@ -247,9 +236,9 @@ strong { font-weight: 600; color: var(--text); }
 .btn--primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: var(--accent-ink);
-  box-shadow: 0 10px 30px -12px var(--accent), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
 }
-.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -12px var(--accent), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -14px rgba(0, 0, 0, 0.7); }
 .btn--ghost { border-color: var(--line-2); color: var(--text); background: color-mix(in srgb, var(--surface) 60%, transparent); }
 .btn--ghost:hover { background: var(--surface-2); border-color: var(--text-3); }
 .btn--sm { height: 38px; padding: 0 16px; font-size: 0.875rem; }
@@ -675,8 +664,8 @@ strong { font-weight: 600; color: var(--text); }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ff4d4d;
-  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.25);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
 .media--left img { object-position: left center; }
 .media--note {

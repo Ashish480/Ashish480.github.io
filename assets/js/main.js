@@ -26,36 +26,6 @@
     });
   }
 
-  /* ---------- Accent theme picker (orange, blue, emerald, violet, amber) ---------- */
-  var palette = document.querySelector('[data-palette]');
-  if (palette) {
-    var paletteBtn = palette.querySelector('[data-palette-toggle]');
-    var paletteMenu = palette.querySelector('.palette__menu');
-    var choices = palette.querySelectorAll('[data-accent-choice]');
-    var markChoice = function () {
-      var current = root.getAttribute('data-accent') || 'cobalt';
-      choices.forEach(function (c) { c.setAttribute('aria-checked', String(c.getAttribute('data-accent-choice') === current)); });
-    };
-    var setPalette = function (open) {
-      paletteMenu.hidden = !open;
-      paletteBtn.setAttribute('aria-expanded', String(open));
-    };
-    markChoice();
-    paletteBtn.addEventListener('click', function (e) { e.stopPropagation(); setPalette(paletteMenu.hidden); });
-    choices.forEach(function (c) {
-      c.addEventListener('click', function () {
-        var accent = c.getAttribute('data-accent-choice');
-        if (accent === 'cobalt') root.removeAttribute('data-accent');
-        else root.setAttribute('data-accent', accent);
-        try { localStorage.setItem('accent', accent); } catch (e) {}
-        markChoice();
-        document.dispatchEvent(new CustomEvent('themechange'));
-      });
-    });
-    document.addEventListener('click', function (e) { if (!palette.contains(e.target)) setPalette(false); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setPalette(false); });
-  }
-
   /* ---------- Navigation: scrolled state, progress bar, mobile menu ---------- */
   var nav = document.querySelector('[data-nav]');
   var menuBtn = document.querySelector('[data-menu-toggle]');
@@ -260,7 +230,7 @@
 
     function readColors() {
       var cs = getComputedStyle(root);
-      colors.accent = cs.getPropertyValue('--accent').trim() || '#5b8cff';
+      colors.accent = cs.getPropertyValue('--accent').trim() || '#ffffff';
       colors.dim = cs.getPropertyValue('--scan-dim').trim() || 'rgba(237,238,240,.16)';
     }
 

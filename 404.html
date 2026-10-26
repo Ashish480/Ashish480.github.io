@@ -14,11 +14,8 @@
     (function () {
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      if (!t) t = 'dark';
       document.documentElement.setAttribute('data-theme', t);
-      var a = null;
-      try { a = localStorage.getItem('accent'); } catch (e) {}
-      if (a && a !== 'cobalt' && a !== 'blue') document.documentElement.setAttribute('data-accent', a);
     })();
   </script>
   <style>
