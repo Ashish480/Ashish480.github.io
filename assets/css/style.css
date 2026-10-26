@@ -766,6 +766,31 @@ strong { font-weight: 600; color: var(--text); }
 .stats div + div { border-left: 1px solid var(--line); }
 .stats dt { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; color: var(--text); }
 .stats dd { margin-top: 4px; color: var(--text-3); font-size: 0.78rem; line-height: 1.4; }
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 22px;
+  counter-reset: step;
+}
+.pipeline li {
+  counter-increment: step;
+  position: relative;
+  padding: 10px 10px 10px 12px;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.pipeline li::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+.pipeline b { display: block; margin-top: 2px; color: var(--text); font-size: 0.85rem; font-weight: 600; }
+.pipeline span { display: block; color: var(--text-3); font-size: 0.72rem; line-height: 1.35; }
 .project__note { margin-top: 14px; color: var(--text-3); font-size: 0.78rem; }
 code {
   padding: 1px 6px;
@@ -1164,6 +1189,7 @@ code {
 
   .award { grid-template-columns: 1fr; gap: 12px; }
   .now__status { position: static; width: fit-content; }
+  .pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stats div { padding: 12px; }
   .stats dt { font-size: 1.1rem; }
   .approach__step { padding: 22px; gap: 16px; }
