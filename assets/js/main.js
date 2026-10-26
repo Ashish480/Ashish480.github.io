@@ -206,229 +206,79 @@
   }
 
   /* ==========================================================================
-     Hero background: a simulated 2D LiDAR sweep.
-     A virtual room (walls, crates, pillars) is ray-cast from a scanner origin,
-     producing a point cloud. A rotating beam lights points as it passes,
-     then they fade to a faint "map" — like SLAM in RViz.
+     Hero: floating dust particles, a robot head that follows the cursor,
+     and rounded panels that grow into place as they scroll in.
      ========================================================================== */
-  var canvas = document.querySelector('[data-lidar]');
-  if (canvas && canvas.getContext) {
-    var ctx = canvas.getContext('2d');
-    var hero = canvas.parentElement;
-    var dpr = 1, W = 0, H = 0, origin = { x: 0, y: 0 };
-    var points = [];
-    var sweep = 0;
-    var running = false;
-    var visible = true;
-    var lastT = 0;
-    var colors = {};
-
-    var RAYS = 900;
-    var TWO_PI = Math.PI * 2;
-    var SPEED = 0.55;     // radians per second
-    var TRAIL = 2.3;      // radians of afterglow behind the beam
-
-    function readColors() {
-      var cs = getComputedStyle(root);
-      colors.accent = cs.getPropertyValue('--accent').trim() || '#ffffff';
-      colors.dim = cs.getPropertyValue('--scan-dim').trim() || 'rgba(237,238,240,.16)';
-    }
-
-    // deterministic random so the "room" is the same on every visit
-    function rng(seed) {
-      return function () {
-        seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
-        var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-      };
-    }
-
-    function buildScene() {
-      var rand = rng(480);
-      var segs = [];
-      var circles = [];
-      var addRect = function (x, y, w, h, gaps) {
-        var pts = [[x, y], [x + w, y], [x + w, y + h], [x, y + h]];
-        for (var i = 0; i < 4; i++) {
-          var a = pts[i], b = pts[(i + 1) % 4];
-          if (gaps && gaps[i]) {
-            // leave a doorway in this wall: split at fractions [g0, g1]
-            var g = gaps[i];
-            segs.push([a[0], a[1], a[0] + (b[0] - a[0]) * g[0], a[1] + (b[1] - a[1]) * g[0]]);
-            segs.push([a[0] + (b[0] - a[0]) * g[1], a[1] + (b[1] - a[1]) * g[1], b[0], b[1]]);
-          } else {
-            segs.push([a[0], a[1], b[0], b[1]]);
-          }
-        }
-      };
-
-      // outer building + inner room with doorways
-      addRect(W * 0.02, H * 0.04, W * 0.96, H * 0.92);
-      addRect(W * 0.34, H * 0.1, W * 0.6, H * 0.74, { 0: [0.18, 0.3], 2: [0.55, 0.7], 3: [0.3, 0.45] });
-
-      // crates & shelves (kept away from the scanner)
-      for (var i = 0; i < 9; i++) {
-        var bw = W * (0.025 + rand() * 0.05);
-        var bh = H * (0.04 + rand() * 0.08);
-        var bx = W * (0.38 + rand() * 0.5);
-        var by = H * (0.14 + rand() * 0.62);
-        if (Math.hypot(bx + bw / 2 - origin.x, by + bh / 2 - origin.y) < Math.min(W, H) * 0.16) continue;
-        addRect(bx, by, bw, bh);
+  var hero = document.querySelector('.hero');
+  var dust = document.querySelector('[data-dust]');
+  if (hero && dust && dust.getContext && !reduceMotion.matches) {
+    var dctx = dust.getContext('2d');
+    var motes = [], dW = 0, dH = 0, dRunning = false;
+    var sizeDust = function () {
+      var r = hero.getBoundingClientRect();
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dW = r.width; dH = r.height;
+      dust.width = Math.round(dW * dpr); dust.height = Math.round(dH * dpr);
+      dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      motes = [];
+      var n = Math.round(Math.min(70, dW / 18));
+      for (var i = 0; i < n; i++) {
+        motes.push({ x: Math.random() * dW, y: Math.random() * dH, r: Math.random() * 1.3 + 0.3,
+          vx: (Math.random() - 0.5) * 0.12, vy: -Math.random() * 0.18 - 0.03, a: Math.random() * 0.5 + 0.15 });
       }
-      // pillars
-      for (var j = 0; j < 5; j++) {
-        var cx = W * (0.1 + rand() * 0.85);
-        var cy = H * (0.1 + rand() * 0.8);
-        if (Math.hypot(cx - origin.x, cy - origin.y) < Math.min(W, H) * 0.18) continue;
-        circles.push([cx, cy, Math.min(W, H) * (0.008 + rand() * 0.012)]);
+    };
+    var drawDust = function () {
+      if (!dRunning) return;
+      dctx.clearRect(0, 0, dW, dH);
+      for (var i = 0; i < motes.length; i++) {
+        var m = motes[i];
+        m.x += m.vx; m.y += m.vy;
+        if (m.y < -5) { m.y = dH + 5; m.x = Math.random() * dW; }
+        if (m.x < -5) m.x = dW + 5; else if (m.x > dW + 5) m.x = -5;
+        dctx.globalAlpha = m.a;
+        dctx.fillStyle = '#ffffff';
+        dctx.beginPath(); dctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); dctx.fill();
       }
-
-      // ray-cast
-      points = [];
-      var maxR = Math.hypot(W, H);
-      for (var r = 0; r < RAYS; r++) {
-        var ang = (r / RAYS) * TWO_PI;
-        var dx = Math.cos(ang), dy = Math.sin(ang);
-        var best = maxR;
-        for (var s = 0; s < segs.length; s++) {
-          var sg = segs[s];
-          var ex = sg[2] - sg[0], ey = sg[3] - sg[1];
-          var den = dx * ey - dy * ex;
-          if (Math.abs(den) < 1e-9) continue;
-          var qx = sg[0] - origin.x, qy = sg[1] - origin.y;
-          var t = (qx * ey - qy * ex) / den;
-          var u = (qx * dy - qy * dx) / den;
-          if (t > 0 && u >= 0 && u <= 1 && t < best) best = t;
-        }
-        for (var c = 0; c < circles.length; c++) {
-          var cc = circles[c];
-          var ox = origin.x - cc[0], oy = origin.y - cc[1];
-          var b = ox * dx + oy * dy;
-          var disc = b * b - (ox * ox + oy * oy - cc[2] * cc[2]);
-          if (disc >= 0) {
-            var tc = -b - Math.sqrt(disc);
-            if (tc > 0 && tc < best) best = tc;
-          }
-        }
-        if (best < maxR) {
-          var noise = (rand() - 0.5) * 2.2;
-          points.push({ a: ang, x: origin.x + dx * (best + noise), y: origin.y + dy * (best + noise), d: best });
-        }
-      }
-    }
-
-    function resize() {
-      var rect = hero.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = rect.width; H = rect.height;
-      canvas.width = Math.round(W * dpr);
-      canvas.height = Math.round(H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      // the scanner sits behind the portrait, as if the camera were the robot
-      var portrait = hero.querySelector('.portrait__frame');
-      if (portrait) {
-        var p = portrait.getBoundingClientRect();
-        origin.x = p.left - rect.left + p.width / 2;
-        origin.y = p.top - rect.top + p.height / 2;
-      } else {
-        origin.x = W * 0.75; origin.y = H * 0.4;
-      }
-      hero.style.setProperty('--scan-x', (origin.x / W * 100).toFixed(1) + '%');
-      hero.style.setProperty('--scan-y', (origin.y / H * 100).toFixed(1) + '%');
-      buildScene();
-      if (!running) draw(0);
-    }
-
-    function draw(dt) {
-      sweep = (sweep + dt * SPEED) % TWO_PI;
-      ctx.clearRect(0, 0, W, H);
-
-      // range rings
-      ctx.strokeStyle = colors.dim;
-      ctx.globalAlpha = 0.35;
-      ctx.lineWidth = 1;
-      for (var k = 1; k <= 4; k++) {
-        ctx.beginPath();
-        ctx.arc(origin.x, origin.y, k * Math.min(W, H) * 0.16, 0, TWO_PI);
-        ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-
-      // beam wedge
-      if (!reduceMotion.matches) {
-        var grad = ctx.createConicGradient ? ctx.createConicGradient(sweep - TRAIL * 0.35, origin.x, origin.y) : null;
-        if (grad) {
-          grad.addColorStop(0, 'rgba(0,0,0,0)');
-          grad.addColorStop(TRAIL * 0.35 / TWO_PI, colors.accent);
-          grad.addColorStop(TRAIL * 0.35 / TWO_PI + 0.0001, 'rgba(0,0,0,0)');
-          ctx.globalAlpha = root.getAttribute('data-theme') === 'light' ? 0.035 : 0.08;
-          ctx.fillStyle = grad;
-          ctx.fillRect(0, 0, W, H);
-          ctx.globalAlpha = 1;
-        }
-      }
-
-      // points: faint map + bright afterglow behind the beam
-      for (var i = 0; i < points.length; i++) {
-        var pt = points[i];
-        var behind = reduceMotion.matches ? TRAIL : (sweep - pt.a + TWO_PI) % TWO_PI;
-        var glow = behind < TRAIL ? 1 - behind / TRAIL : 0;
-        if (glow > 0) {
-          ctx.globalAlpha = 0.15 + glow * 0.85;
-          ctx.fillStyle = colors.accent;
-          ctx.fillRect(pt.x - 1.2, pt.y - 1.2, 2.4, 2.4);
-        } else {
-          ctx.globalAlpha = 1;
-          ctx.fillStyle = colors.dim;
-          ctx.fillRect(pt.x - 0.9, pt.y - 0.9, 1.8, 1.8);
-        }
-      }
-      ctx.globalAlpha = 1;
-
-      // scanner origin
-      ctx.fillStyle = colors.accent;
-      ctx.beginPath();
-      ctx.arc(origin.x, origin.y, 3, 0, TWO_PI);
-      ctx.fill();
-    }
-
-    function frame(t) {
-      if (!running) return;
-      var dt = lastT ? Math.min((t - lastT) / 1000, 0.05) : 0;
-      lastT = t;
-      draw(dt);
-      requestAnimationFrame(frame);
-    }
-    function start() {
-      if (running || reduceMotion.matches || !visible || document.hidden) return;
-      running = true; lastT = 0;
-      requestAnimationFrame(frame);
-    }
-    function stop() { running = false; }
-
-    readColors();
-    resize();
-    start();
-
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(resize, 120);
-    });
-    document.addEventListener('themechange', function () { readColors(); if (!running) draw(0); });
-    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+      requestAnimationFrame(drawDust);
+    };
+    sizeDust();
+    window.addEventListener('resize', sizeDust);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
-        visible = entries[0].isIntersecting;
-        visible ? start() : stop();
+        var vis = entries[0].isIntersecting;
+        if (vis && !dRunning) { dRunning = true; requestAnimationFrame(drawDust); }
+        if (!vis) dRunning = false;
       }).observe(hero);
-    }
-    reduceMotion.addEventListener && reduceMotion.addEventListener('change', function () {
-      reduceMotion.matches ? (stop(), draw(0)) : start();
+    } else { dRunning = true; requestAnimationFrame(drawDust); }
+  }
+
+  var head = document.querySelector('[data-robot-head]');
+  if (hero && head && !reduceMotion.matches && window.matchMedia('(pointer: fine)').matches) {
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      var dx = (e.clientX - r.left) / r.width - 0.5;
+      var dy = (e.clientY - r.top) / r.height - 0.5;
+      head.style.transform = 'translate(' + (dx * 14).toFixed(1) + 'px,' + (dy * 8).toFixed(1) + 'px) rotate(' + (dx * 7).toFixed(2) + 'deg)';
     });
-    // fonts can shift layout once loaded — re-measure the portrait position
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(resize);
+    hero.addEventListener('pointerleave', function () { head.style.transform = ''; });
+  }
+
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+  if (panels.length && !reduceMotion.matches) {
+    var panelTick = false;
+    var updatePanels = function () {
+      var vh = window.innerHeight;
+      panels.forEach(function (p) {
+        var top = p.getBoundingClientRect().top;
+        var t = Math.min(Math.max((vh - top) / (vh * 0.55), 0), 1);
+        p.style.setProperty('--panel-scale', (0.95 + 0.05 * t).toFixed(4));
+      });
+      panelTick = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!panelTick) { panelTick = true; requestAnimationFrame(updatePanels); }
+    }, { passive: true });
+    window.addEventListener('resize', updatePanels);
+    updatePanels();
   }
 })();

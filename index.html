@@ -42,7 +42,7 @@
     (function () {
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (!t) t = 'dark';
+      t = 'dark';
       document.documentElement.setAttribute('data-theme', t);
       document.documentElement.classList.add('js');
       // safety net: if main.js fails to load, never leave content hidden
@@ -94,6 +94,12 @@
       <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.2a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></g></symbol>
       <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
       <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="5" r="2.2"/><path d="M8.2 19H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.8"/></g></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+      <symbol id="i-wave" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2.5-6 4 12 3-9 2 3H21"/></g></symbol>
+      <symbol id="i-chip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></g></symbol>
+      <symbol id="i-cube" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 20 7v10l-8 4.2L4 17V7z"/><path d="M4 7l8 4.2L20 7M12 11.2v10"/></g></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.4"/><path d="M16.5 14c2.6.2 4.5 2.1 4.5 4.8"/></g></symbol>
     </defs>
   </svg>
 
@@ -104,47 +110,38 @@
        NAVIGATION
        ================================================================ -->
   <header class="nav" data-nav>
-    <div class="container nav__inner">
+    <div class="nav__pill">
       <a href="#top" class="brand" aria-label="Ashish Shajan — back to top">
         <span class="brand__mark" aria-hidden="true">AS</span>
         <span class="brand__name">Ashish Shajan</span>
       </a>
 
       <nav class="nav__links" aria-label="Primary">
-        <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#leadership">Leadership</a>
         <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#recognition">Recognition</a>
+        <a href="#core-skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#leadership">Leadership</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <div class="nav__actions">
-        <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to light theme">
-          <svg class="icon icon--sun"><use href="#i-sun"/></svg>
-          <svg class="icon icon--moon"><use href="#i-moon"/></svg>
-        </button>
-        <a class="btn btn--ghost btn--sm nav__resume" href="assets/Ashish_Shajan_Resume.pdf" target="_blank" rel="noopener">
-          Résumé <svg class="icon"><use href="#i-arrow-up-right"/></svg>
-        </a>
-        <button class="icon-btn nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-          <svg class="icon icon--menu"><use href="#i-menu"/></svg>
-          <svg class="icon icon--close"><use href="#i-close"/></svg>
-        </button>
-      </div>
+      <a class="btn btn--gloss btn--sm nav__resume" href="assets/Ashish_Shajan_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      <button class="icon-btn nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="icon icon--menu"><use href="#i-menu"/></svg>
+        <svg class="icon icon--close"><use href="#i-close"/></svg>
+      </button>
     </div>
 
     <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
-      <nav class="container" aria-label="Mobile">
-        <a href="#work"><span class="mono">01</span>Work</a>
-        <a href="#about"><span class="mono">02</span>About</a>
-        <a href="#leadership"><span class="mono">03</span>Leadership</a>
-        <a href="#experience"><span class="mono">04</span>Experience</a>
-        <a href="#skills"><span class="mono">05</span>Skills</a>
-        <a href="#recognition"><span class="mono">06</span>Recognition</a>
-        <a href="#contact"><span class="mono">07</span>Contact</a>
-        <a class="btn btn--primary" href="assets/Ashish_Shajan_Resume.pdf" target="_blank" rel="noopener">Download résumé <svg class="icon"><use href="#i-download"/></svg></a>
+      <nav aria-label="Mobile">
+        <a href="#about"><span class="mono">01</span>About</a>
+        <a href="#experience"><span class="mono">02</span>Experience</a>
+        <a href="#core-skills"><span class="mono">03</span>Core skills</a>
+        <a href="#work"><span class="mono">04</span>Selected work</a>
+        <a href="#leadership"><span class="mono">05</span>Leadership</a>
+        <a href="#recognition"><span class="mono">07</span>Recognition</a>
+        <a href="#contact"><span class="mono">08</span>Contact</a>
+        <a class="btn btn--gloss" href="assets/Ashish_Shajan_Resume.pdf" target="_blank" rel="noopener">Download résumé <svg class="icon"><use href="#i-download"/></svg></a>
       </nav>
     </div>
   </header>
@@ -155,43 +152,136 @@
          HERO
          ================================================================ -->
     <section class="hero" id="top">
-      <canvas class="hero__scan" data-lidar aria-hidden="true"></canvas>
+      <canvas class="hero__dust" data-dust aria-hidden="true"></canvas>
 
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <p class="eyebrow hero__eyebrow">
-            <span class="status-dot" aria-hidden="true"></span>
-            Chief Technical Officer at AT Bots
-          </p>
+      <div class="hero__inner">
+        <div class="hero__robot" aria-hidden="false">
+          <svg class="robot" viewBox="0 0 600 720" role="img" aria-label="Illustration of a glossy black humanoid robot">
+            <defs>
+              <radialGradient id="rg-shell" cx="38%" cy="28%" r="80%">
+                <stop offset="0" stop-color="#5a5b61"/><stop offset=".28" stop-color="#1f2024"/><stop offset=".7" stop-color="#0b0b0d"/><stop offset="1" stop-color="#000"/>
+              </radialGradient>
+              <radialGradient id="rg-visor" cx="45%" cy="35%" r="75%">
+                <stop offset="0" stop-color="#26272c"/><stop offset=".6" stop-color="#08080a"/><stop offset="1" stop-color="#000"/>
+              </radialGradient>
+              <linearGradient id="lg-spec" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".5" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="lg-body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2b2c31"/><stop offset=".35" stop-color="#121215"/><stop offset="1" stop-color="#050506"/>
+              </linearGradient>
+              <linearGradient id="lg-rim" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".15" stop-color="#fff" stop-opacity=".45"/><stop offset=".5" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient>
+              <pattern id="pt-carbon" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="8" height="8" fill="#0d0d10"/><rect width="4" height="8" fill="#16161a"/>
+              </pattern>
+              <filter id="f-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs>
 
-          <h1 class="hero__title">Ashish Shajan<span class="hero__dot">.</span></h1>
-          <p class="hero__role">Robotics Engineer</p>
+            <g class="robot__body">
+              <!-- shoulders and arms -->
+              <ellipse cx="128" cy="540" rx="74" ry="66" fill="url(#rg-shell)"/>
+              <ellipse cx="472" cy="540" rx="74" ry="66" fill="url(#rg-shell)"/>
+              <path d="M70 600 Q60 690 90 720 L170 720 Q186 650 176 590 Z" fill="url(#lg-body)"/>
+              <path d="M530 600 Q540 690 510 720 L430 720 Q414 650 424 590 Z" fill="url(#lg-body)"/>
+              <path d="M98 512 Q120 486 152 488" stroke="#fff" stroke-opacity=".5" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M448 488 Q480 486 502 512" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- torso -->
+              <path d="M170 500 Q300 452 430 500 Q470 600 452 720 L148 720 Q130 600 170 500 Z" fill="url(#pt-carbon)"/>
+              <path d="M170 500 Q300 452 430 500 Q470 600 452 720 L148 720 Q130 600 170 500 Z" fill="url(#lg-body)" opacity=".75"/>
+              <path d="M178 506 Q300 462 422 506" stroke="url(#lg-rim)" stroke-width="3" fill="none"/>
+              <!-- chest plate with monogram -->
+              <path d="M232 540 Q300 520 368 540 L360 640 Q300 668 240 640 Z" fill="#0a0a0c" stroke="#fff" stroke-opacity=".08"/>
+              <text x="300" y="607" text-anchor="middle" font-family="Geist Mono, monospace" font-size="38" font-weight="600" fill="#f5f5f5" letter-spacing="2">AS</text>
+              <!-- neck -->
+              <rect x="262" y="420" width="76" height="92" rx="14" fill="url(#lg-body)"/>
+              <rect x="262" y="440" width="76" height="6" fill="#000" opacity=".6"/><rect x="262" y="462" width="76" height="6" fill="#000" opacity=".6"/><rect x="262" y="484" width="76" height="6" fill="#000" opacity=".6"/>
+              <path d="M268 428 L268 504" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
+            </g>
 
-          <p class="hero__lead">
-            I build machines that perceive, decide and move: autonomous drones that inspect
-            infrastructure, a Level-2 autonomous BAJA vehicle, legged robots and, right now, a
-            semi-humanoid robot at AT Bots. I take each one from simulation to real-world deployment.
-          </p>
-
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#work">
-              View selected work <svg class="icon"><use href="#i-arrow-down"/></svg>
-            </a>
-            <a class="btn btn--ghost" href="assets/Ashish_Shajan_Resume.pdf" download>
-              Download résumé <svg class="icon"><use href="#i-download"/></svg>
-            </a>
-          </div>
-
-          <ul class="hero__social" aria-label="Profiles">
-            <li><a href="https://github.com/Ashish480" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon"><use href="#i-github"/></svg><span>GitHub</span></a></li>
-            <li><a href="https://www.linkedin.com/in/ashish-shajan-65743a1b7/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
-            <li><a href="mailto:ashishshajan480@gmail.com" aria-label="Email"><svg class="icon"><use href="#i-mail"/></svg><span>Email</span></a></li>
-          </ul>
+            <g class="robot__head" data-robot-head>
+              <ellipse cx="300" cy="438" rx="70" ry="14" fill="#000" opacity=".7" filter="url(#f-soft)"/>
+              <!-- helmet -->
+              <path d="M300 92 C392 92 440 168 440 262 C440 352 404 428 300 436 C196 428 160 352 160 262 C160 168 208 92 300 92 Z" fill="url(#rg-shell)"/>
+              <!-- visor -->
+              <path d="M300 150 C370 150 408 198 410 262 C412 320 384 368 300 372 C216 368 188 320 190 262 C192 198 230 150 300 150 Z" fill="url(#rg-visor)" stroke="#fff" stroke-opacity=".06"/>
+              <!-- LED eyes (dot matrix) -->
+              <g class="robot__eyes" fill="#f5f5f5">
+                <g transform="translate(232 252)">
+                  <circle cx="0" cy="0" r="3.4"/><circle cx="10" cy="0" r="3.4"/><circle cx="20" cy="0" r="3.4"/><circle cx="30" cy="0" r="3.4"/><circle cx="40" cy="0" r="3.4"/>
+                  <circle cx="0" cy="10" r="3.4"/><circle cx="10" cy="10" r="3.4"/><circle cx="20" cy="10" r="3.4"/><circle cx="30" cy="10" r="3.4"/><circle cx="40" cy="10" r="3.4"/>
+                  <circle cx="5" cy="20" r="3.4" opacity=".55"/><circle cx="15" cy="20" r="3.4" opacity=".55"/><circle cx="25" cy="20" r="3.4" opacity=".55"/><circle cx="35" cy="20" r="3.4" opacity=".55"/>
+                </g>
+                <g transform="translate(328 252)">
+                  <circle cx="0" cy="0" r="3.4"/><circle cx="10" cy="0" r="3.4"/><circle cx="20" cy="0" r="3.4"/><circle cx="30" cy="0" r="3.4"/><circle cx="40" cy="0" r="3.4"/>
+                  <circle cx="0" cy="10" r="3.4"/><circle cx="10" cy="10" r="3.4"/><circle cx="20" cy="10" r="3.4"/><circle cx="30" cy="10" r="3.4"/><circle cx="40" cy="10" r="3.4"/>
+                  <circle cx="5" cy="20" r="3.4" opacity=".55"/><circle cx="15" cy="20" r="3.4" opacity=".55"/><circle cx="25" cy="20" r="3.4" opacity=".55"/><circle cx="35" cy="20" r="3.4" opacity=".55"/>
+                </g>
+              </g>
+              <!-- specular highlights -->
+              <path d="M214 150 C236 118 270 104 304 104 C268 116 240 140 224 182 Z" fill="url(#lg-spec)" opacity=".85"/>
+              <path d="M410 200 C426 236 430 280 418 324" stroke="#fff" stroke-opacity=".35" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <path d="M236 176 C258 162 282 158 300 158" stroke="#fff" stroke-opacity=".22" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <ellipse cx="358" cy="196" rx="22" ry="10" fill="#fff" opacity=".12" transform="rotate(28 358 196)"/>
+            </g>
+          </svg>
+          <div class="hero__floor" aria-hidden="true"></div>
         </div>
 
+        <div class="hero__copy">
+          <p class="hero__badge"><span class="status-dot" aria-hidden="true"></span>Chief Technical Officer · AT Bots</p>
+          <p class="hero__name mono">Ashish Shajan — Robotics Engineer</p>
+          <h1 class="hero__title"><span>Building robots</span> <span>that work in</span> <span>the real world.</span></h1>
+          <div class="hero__cta">
+            <a class="btn btn--gloss" href="#work">View work</a>
+            <a class="btn btn--glass" href="assets/Ashish_Shajan_Resume.pdf" download>Résumé <svg class="icon"><use href="#i-download"/></svg></a>
+          </div>
+        </div>
+
+        <aside class="hero__aside">
+          <p class="hero__aside-title">From simulation to hardware</p>
+          <p class="hero__aside-text">Autonomous drones, a Level-2 autonomous BAJA vehicle, legged robots and, right now, a semi-humanoid at AT Bots. I lead the teams and write the code that make them move.</p>
+          <ul class="hero__social" aria-label="Profiles">
+            <li><a href="https://github.com/Ashish480" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon"><use href="#i-github"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/ashish-shajan-65743a1b7/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:ashishshajan480@gmail.com" aria-label="Email"><svg class="icon"><use href="#i-mail"/></svg></a></li>
+          </ul>
+        </aside>
+
+        <a class="hero__scroll mono" href="#about" aria-label="Scroll to About">Scroll<span aria-hidden="true"></span></a>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         ABOUT
+         ================================================================ -->
+    <section class="section panel panel--light" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <div class="about__intro reveal">
+          <p class="section-label mono"><span>01</span> About</p>
+          <h2 class="section-title" id="about-title">Engineer by training, <em>systems thinker</em> by habit.</h2>
+          <div class="about__text">
+            <p>I'm a robotics engineer from Kerala, India, trained in Robotics &amp; Automation at Saintgits College of Engineering, and Chief Technical Officer of AT Bots. I build complete robots: mechanics, embedded electronics, perception, sensor fusion, navigation and control, plus the integration work that makes them run together on a real machine.</p>
+            <p>I lead teams the way I build robots: modular, test-driven and simulation-first. At Team Equinox I went from Autonomous Systems Engineer to Autonomous Head to captain, coordinating mechanical, electrical, embedded and AI engineers around one roadmap. At AT Bots I lead engineering, our semi-humanoid robot, and the intern program.</p>
+          </div>
+          <ul class="creds" aria-label="Current and past roles">
+            <li><span class="creds__org">AT Bots</span><span class="creds__role">Chief Technical Officer</span></li>
+            <li><span class="creds__org">Team Equinox · SAE BAJA</span><span class="creds__role">Autonomous Head &amp; Captain</span></li>
+            <li><span class="creds__org">IIIT Hyderabad · RRC</span><span class="creds__role">Research Intern</span></li>
+            <li><span class="creds__org">Intel Unnati</span><span class="creds__role">Industrial Training</span></li>
+          </ul>
+          <dl class="langs">
+            <div><dt>English</dt><dd>Professional</dd></div>
+            <div><dt>Malayalam</dt><dd>Native</dd></div>
+            <div><dt>Hindi</dt><dd>Intermediate</dd></div>
+          </dl>
+        </div>
+
+        <div class="about__side">
         <figure class="portrait">
           <div class="portrait__frame">
-            <img src="assets/img/portrait.webp" alt="Portrait of Ashish Shajan" width="640" height="640" fetchpriority="high">
+            <img src="assets/img/portrait.webp" alt="Portrait of Ashish Shajan" width="640" height="640" loading="lazy">
           </div>
           <span class="portrait__badge"><svg class="icon"><use href="#i-pin"/></svg>Kottayam, Kerala</span>
           <figcaption class="portrait__card">
@@ -200,15 +290,165 @@
             <span class="portrait__sub">AT Bots · in development</span>
           </figcaption>
         </figure>
+        <ol class="approach" aria-label="How I work">
+          <li class="approach__step reveal">
+            <span class="approach__num mono">01</span>
+            <div>
+              <h3>Model &amp; simulate</h3>
+              <p>Kinematics, dynamics and digital twins in Gazebo, Isaac Sim, CARLA and IPG CarMaker before any hardware moves.</p>
+            </div>
+          </li>
+          <li class="approach__step reveal">
+            <span class="approach__num mono">02</span>
+            <div>
+              <h3>Integrate &amp; fuse</h3>
+              <p>Modular ROS&nbsp;2 nodes, EKF sensor fusion and PX4 / CAN interfaces that turn perception, planning and control into one system.</p>
+            </div>
+          </li>
+          <li class="approach__step reveal">
+            <span class="approach__num mono">03</span>
+            <div>
+              <h3>Validate &amp; deploy</h3>
+              <p>Hardware-in-the-loop tests, PID tuning and failsafe scenarios, followed by real-world trials on the track, in the field and in the air.</p>
+            </div>
+          </li>
+        </ol>
+        </div>
       </div>
+    </section>
 
+    <!-- ================================================================
+         EXPERIENCE
+         ================================================================ -->
+    <section class="section panel" id="experience" aria-labelledby="experience-title">
       <div class="container">
-        <ul class="creds" aria-label="Current and past roles">
-          <li><span class="creds__org">AT Bots</span><span class="creds__role">Chief Technical Officer</span></li>
-          <li><span class="creds__org">Team Equinox · SAE BAJA</span><span class="creds__role">Autonomous Head &amp; Captain</span></li>
-          <li><span class="creds__org">IIIT Hyderabad · RRC</span><span class="creds__role">Research Intern · 2024–25</span></li>
-          <li><span class="creds__org">Intel Unnati</span><span class="creds__role">Industrial Training · 2024</span></li>
+        <header class="section-head reveal">
+          <p class="section-label mono"><span>02</span> Experience</p>
+          <div>
+            <h2 class="section-title" id="experience-title">Where I've <em>built.</em></h2>
+            <p class="section-intro">Leadership roles at a robotics startup and a competition team, backed by research and industry training.</p>
+          </div>
+        </header>
+
+        <ol class="timeline">
+          <li class="role reveal">
+            <div class="role__when mono">Jan 2025 — Present</div>
+            <div class="role__body">
+              <h3 class="role__title">Chief Technical Officer</h3>
+              <p class="role__org">AT Bots <span class="role__loc"><span class="mono role__tenure">Engineer Jan–Apr 2025 · CTO from Apr 2025</span></span><span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Kerala, India</span></p>
+              <ul class="role__points">
+                <li>Delivered an autonomous structural crack-inspection quadcopter (PX4, ROS&nbsp;2, Jetson onboard perception) through real-hardware flight tests and a field trial.</li>
+                <li>Led system integration of the drone, PX4, ROS&nbsp;2 and ground station, and designed sensor integration and fusion (IMU, GNSS, LiDAR) for localization.</li>
+                <li>Lead the engineering team across robotics, embedded and AI, covering technical roadmap, code review, procurement and hardware/software integration.</li>
+                <li>Led technical integration of <strong>EduBot</strong>, AT Bots' AI-powered education and robotics product.</li>
+                <li>Leading development of AT Bots' semi-humanoid robot (in progress), shaped the MEDIVA medical-assistant concept, and mentor intern batches in ROS&nbsp;2 and AI/ML.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="role reveal">
+            <div class="role__when mono">Sep 2024 — 2026</div>
+            <div class="role__body">
+              <h3 class="role__title">Autonomous Head &amp; Captain</h3>
+              <p class="role__org">Team Equinox · SAE BAJA India <span class="role__loc"><span class="mono role__tenure">Autonomous Systems Engineer → Autonomous Head → Captain</span></span><span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Kottayam, India</span></p>
+              <ul class="role__points">
+                <li>Joined as Autonomous Systems Engineer (Sep 2024), became Autonomous Head (Mar 2025), then captained the team.</li>
+                <li>Led end-to-end development of a Level-2 autonomous BAJA vehicle, owning the technical roadmap, milestones and competition strategy.</li>
+                <li>As captain, coordinated the mechanical, electrical, embedded and AI teams for seamless hardware–software integration.</li>
+                <li>Architected a modular ROS&nbsp;2 stack: radar perception, EKF localization and ACC / AEB / LKA control.</li>
+                <li>Ran simulation workflows in Gazebo, CARLA and IPG CarMaker, then real-time integration and performance tuning on track.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="role reveal">
+            <div class="role__when mono">Oct 2024 — Aug 2025</div>
+            <div class="role__body">
+              <h3 class="role__title">Research Intern</h3>
+              <p class="role__org">Robotics Research Centre, IIIT Hyderabad <span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Hyderabad, India</span></p>
+              <ul class="role__points">
+                <li>Selected for the internship after completing a one-month teaser program and a two-day master-class workshop.</li>
+                <li>Built a PX4 + ROS&nbsp;2 offboard-control and GPS-failsafe test workspace, plus Gazebo environments to validate drone control before hardware tests.</li>
+                <li>Engineered a custom mobile robot from scratch with 2D LiDAR SLAM producing high-resolution occupancy-grid maps.</li>
+                <li>Built real-time differential-drive kinematics and wheel-odometry pipelines, and ran HITL testing and PID tuning.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="role reveal">
+            <div class="role__when mono">May — Jul 2024</div>
+            <div class="role__body">
+              <h3 class="role__title">Intern, Intel Unnati Industrial Training</h3>
+              <p class="role__org">Intel Corporation <span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Bengaluru, India · Hybrid</span></p>
+              <ul class="role__points">
+                <li>Selected for Intel's national-level industrial training program in advanced AI and data-driven systems.</li>
+                <li>Built data-preprocessing, feature-engineering and model-validation pipelines, including the Heart-Attack Risk Prediction project (86.8% accuracy).</li>
+                <li>Presented technical findings and solution strategies through structured reports and demonstrations.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CORE SKILLS
+         ================================================================ -->
+    <section class="section panel panel--light" id="core-skills" aria-labelledby="core-title">
+      <div class="container">
+        <header class="section-head section-head--center reveal">
+          <p class="section-label mono"><span>03</span> Core skills</p>
+          <h2 class="section-title" id="core-title">What I bring <em>to a robot.</em></h2>
+          <p class="section-intro">Six strengths I use on every build, from the first sketch to the field test.</p>
+        </header>
+
+        <ul class="core-row reveal" aria-hidden="true">
+          <li><span><svg class="icon"><use href="#i-route"/></svg></span>Autonomy</li>
+          <li><span><svg class="icon"><use href="#i-eye"/></svg></span>Perception</li>
+          <li><span><svg class="icon"><use href="#i-wave"/></svg></span>Control</li>
+          <li><span><svg class="icon"><use href="#i-chip"/></svg></span>Embedded</li>
+          <li><span><svg class="icon"><use href="#i-cube"/></svg></span>Simulation</li>
+          <li><span><svg class="icon"><use href="#i-users"/></svg></span>Leadership</li>
         </ul>
+
+        <div class="core-grid">
+          <article class="core reveal">
+            <span class="core__icon"><svg class="icon"><use href="#i-route"/></svg></span>
+            <h3 class="core__title">Autonomy &amp; navigation</h3>
+            <p class="core__text">SLAM, localization and path planning for ground robots, drones and vehicles that run without a driver.</p>
+            <ul class="core__tags"><li>ROS 2</li><li>Nav2</li><li>SLAM</li><li>PX4</li></ul>
+          </article>
+          <article class="core reveal">
+            <span class="core__icon"><svg class="icon"><use href="#i-eye"/></svg></span>
+            <h3 class="core__title">Perception &amp; sensor fusion</h3>
+            <p class="core__text">Cameras, LiDAR, radar and IMUs fused with EKFs into one reliable picture of the world.</p>
+            <ul class="core__tags"><li>Computer vision</li><li>EKF</li><li>Radar</li><li>LiDAR</li></ul>
+          </article>
+          <article class="core reveal">
+            <span class="core__icon"><svg class="icon"><use href="#i-wave"/></svg></span>
+            <h3 class="core__title">Control systems</h3>
+            <p class="core__text">PID, Stanley and fuzzy-logic controllers, plus kinematics for legs, wheels and arms.</p>
+            <ul class="core__tags"><li>PID</li><li>Stanley</li><li>Inverse kinematics</li><li>Gait</li></ul>
+          </article>
+          <article class="core reveal">
+            <span class="core__icon"><svg class="icon"><use href="#i-chip"/></svg></span>
+            <h3 class="core__title">Embedded &amp; integration</h3>
+            <p class="core__text">Drive-by-wire over CAN, microcontrollers and companion computers that wire software to real actuators.</p>
+            <ul class="core__tags"><li>CAN bus</li><li>Jetson</li><li>ESP32</li><li>micro-ROS</li></ul>
+          </article>
+          <article class="core reveal">
+            <span class="core__icon"><svg class="icon"><use href="#i-cube"/></svg></span>
+            <h3 class="core__title">Simulation &amp; testing</h3>
+            <p class="core__text">Digital twins and HITL tests that de-risk hardware before it moves.</p>
+            <ul class="core__tags"><li>Gazebo</li><li>Isaac Sim</li><li>CARLA</li><li>IPG CarMaker</li></ul>
+          </article>
+          <article class="core reveal">
+            <span class="core__icon"><svg class="icon"><use href="#i-users"/></svg></span>
+            <h3 class="core__title">Leadership &amp; delivery</h3>
+            <p class="core__text">Captaining multidisciplinary teams, planning roadmaps and budgets, mentoring interns.</p>
+            <ul class="core__tags"><li>Team lead</li><li>Roadmaps</li><li>Budgeting</li><li>Mentoring</li></ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -218,10 +458,10 @@
          block, change the text and point the images at new files in
          assets/img/projects/.
          ================================================================ -->
-    <section class="section" id="work" aria-labelledby="work-title">
+    <section class="section panel" id="work" aria-labelledby="work-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="section-label mono"><span>01</span> Selected work</p>
+          <p class="section-label mono"><span>04</span> Selected work</p>
           <div>
             <h2 class="section-title" id="work-title">Autonomy, from simulation<br class="br-lg"> <em>to the real world.</em></h2>
             <p class="section-intro">Seven flagship builds across ground, aerial, legged and service robotics. Each one went from model and simulation through integration and testing, with real hardware as the goal.</p>
@@ -627,57 +867,12 @@
     </section>
 
     <!-- ================================================================
-         ABOUT
-         ================================================================ -->
-    <section class="section section--alt" id="about" aria-labelledby="about-title">
-      <div class="container about">
-        <div class="about__intro reveal">
-          <p class="section-label mono"><span>02</span> About</p>
-          <h2 class="section-title" id="about-title">Engineer by training, <em>systems thinker</em> by habit.</h2>
-          <div class="about__text">
-            <p>I'm a robotics engineer from Kerala, India, trained in Robotics &amp; Automation at Saintgits College of Engineering, and Chief Technical Officer of AT Bots. I build complete robots: mechanics, embedded electronics, perception, sensor fusion, navigation and control, plus the integration work that makes them run together on a real machine.</p>
-            <p>I lead teams the way I build robots: modular, test-driven and simulation-first. At Team Equinox I went from Autonomous Systems Engineer to Autonomous Head to captain, coordinating mechanical, electrical, embedded and AI engineers around one roadmap. At AT Bots I lead engineering, our semi-humanoid robot, and the intern program.</p>
-          </div>
-          <dl class="langs">
-            <div><dt>English</dt><dd>Professional</dd></div>
-            <div><dt>Malayalam</dt><dd>Native</dd></div>
-            <div><dt>Hindi</dt><dd>Intermediate</dd></div>
-          </dl>
-        </div>
-
-        <ol class="approach" aria-label="How I work">
-          <li class="approach__step reveal">
-            <span class="approach__num mono">01</span>
-            <div>
-              <h3>Model &amp; simulate</h3>
-              <p>Kinematics, dynamics and digital twins in Gazebo, Isaac Sim, CARLA and IPG CarMaker before any hardware moves.</p>
-            </div>
-          </li>
-          <li class="approach__step reveal">
-            <span class="approach__num mono">02</span>
-            <div>
-              <h3>Integrate &amp; fuse</h3>
-              <p>Modular ROS&nbsp;2 nodes, EKF sensor fusion and PX4 / CAN interfaces that turn perception, planning and control into one system.</p>
-            </div>
-          </li>
-          <li class="approach__step reveal">
-            <span class="approach__num mono">03</span>
-            <div>
-              <h3>Validate &amp; deploy</h3>
-              <p>Hardware-in-the-loop tests, PID tuning and failsafe scenarios, followed by real-world trials on the track, in the field and in the air.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ================================================================
          LEADERSHIP & PROJECT MANAGEMENT
          ================================================================ -->
-    <section class="section" id="leadership" aria-labelledby="leadership-title">
+    <section class="section panel panel--light" id="leadership" aria-labelledby="leadership-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="section-label mono"><span>03</span> Leadership</p>
+          <p class="section-label mono"><span>05</span> Leadership</p>
           <div>
             <h2 class="section-title" id="leadership-title">Leading teams, <em>shipping robots.</em></h2>
             <p class="section-intro">Building robots is a team sport. Alongside the engineering, I plan the work, run the teams and get hardware out the door on time.</p>
@@ -727,86 +922,12 @@
     </section>
 
     <!-- ================================================================
-         EXPERIENCE
-         ================================================================ -->
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="section-label mono"><span>04</span> Experience</p>
-          <div>
-            <h2 class="section-title" id="experience-title">Where I've <em>built.</em></h2>
-            <p class="section-intro">Leadership roles at a robotics startup and a competition team, backed by research and industry training.</p>
-          </div>
-        </header>
-
-        <ol class="timeline">
-          <li class="role reveal">
-            <div class="role__when mono">Jan 2025 — Present</div>
-            <div class="role__body">
-              <h3 class="role__title">Chief Technical Officer</h3>
-              <p class="role__org">AT Bots <span class="role__loc"><span class="mono role__tenure">Engineer Jan–Apr 2025 · CTO from Apr 2025</span></span><span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Kerala, India</span></p>
-              <ul class="role__points">
-                <li>Delivered an autonomous structural crack-inspection quadcopter (PX4, ROS&nbsp;2, Jetson onboard perception) through real-hardware flight tests and a field trial.</li>
-                <li>Led system integration of the drone, PX4, ROS&nbsp;2 and ground station, and designed sensor integration and fusion (IMU, GNSS, LiDAR) for localization.</li>
-                <li>Lead the engineering team across robotics, embedded and AI, covering technical roadmap, code review, procurement and hardware/software integration.</li>
-                <li>Led technical integration of <strong>EduBot</strong>, AT Bots' AI-powered education and robotics product.</li>
-                <li>Leading development of AT Bots' semi-humanoid robot (in progress), shaped the MEDIVA medical-assistant concept, and mentor intern batches in ROS&nbsp;2 and AI/ML.</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="role reveal">
-            <div class="role__when mono">Sep 2024 — 2026</div>
-            <div class="role__body">
-              <h3 class="role__title">Autonomous Head &amp; Captain</h3>
-              <p class="role__org">Team Equinox · SAE BAJA India <span class="role__loc"><span class="mono role__tenure">Autonomous Systems Engineer → Autonomous Head → Captain</span></span><span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Kottayam, India</span></p>
-              <ul class="role__points">
-                <li>Joined as Autonomous Systems Engineer (Sep 2024), became Autonomous Head (Mar 2025), then captained the team.</li>
-                <li>Led end-to-end development of a Level-2 autonomous BAJA vehicle, owning the technical roadmap, milestones and competition strategy.</li>
-                <li>As captain, coordinated the mechanical, electrical, embedded and AI teams for seamless hardware–software integration.</li>
-                <li>Architected a modular ROS&nbsp;2 stack: radar perception, EKF localization and ACC / AEB / LKA control.</li>
-                <li>Ran simulation workflows in Gazebo, CARLA and IPG CarMaker, then real-time integration and performance tuning on track.</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="role reveal">
-            <div class="role__when mono">Oct 2024 — Aug 2025</div>
-            <div class="role__body">
-              <h3 class="role__title">Research Intern</h3>
-              <p class="role__org">Robotics Research Centre, IIIT Hyderabad <span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Hyderabad, India</span></p>
-              <ul class="role__points">
-                <li>Selected for the internship after completing a one-month teaser program and a two-day master-class workshop.</li>
-                <li>Built a PX4 + ROS&nbsp;2 offboard-control and GPS-failsafe test workspace, plus Gazebo environments to validate drone control before hardware tests.</li>
-                <li>Engineered a custom mobile robot from scratch with 2D LiDAR SLAM producing high-resolution occupancy-grid maps.</li>
-                <li>Built real-time differential-drive kinematics and wheel-odometry pipelines, and ran HITL testing and PID tuning.</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="role reveal">
-            <div class="role__when mono">May — Jul 2024</div>
-            <div class="role__body">
-              <h3 class="role__title">Intern, Intel Unnati Industrial Training</h3>
-              <p class="role__org">Intel Corporation <span class="role__loc"><svg class="icon"><use href="#i-pin"/></svg>Bengaluru, India · Hybrid</span></p>
-              <ul class="role__points">
-                <li>Selected for Intel's national-level industrial training program in advanced AI and data-driven systems.</li>
-                <li>Built data-preprocessing, feature-engineering and model-validation pipelines, including the Heart-Attack Risk Prediction project (86.8% accuracy).</li>
-                <li>Presented technical findings and solution strategies through structured reports and demonstrations.</li>
-              </ul>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ================================================================
          SKILLS
          ================================================================ -->
-    <section class="section section--alt" id="skills" aria-labelledby="skills-title">
+    <section class="section panel" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="section-label mono"><span>05</span> Toolkit</p>
+          <p class="section-label mono"><span>06</span> Toolkit</p>
           <div>
             <h2 class="section-title" id="skills-title">The stack I <em>work in.</em></h2>
             <p class="section-intro">The tools I use most, from embedded hardware up to AI models and simulation.</p>
@@ -857,10 +978,10 @@
     <!-- ================================================================
          RECOGNITION & EDUCATION
          ================================================================ -->
-    <section class="section" id="recognition" aria-labelledby="recognition-title">
+    <section class="section panel panel--light" id="recognition" aria-labelledby="recognition-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="section-label mono"><span>06</span> Recognition</p>
+          <p class="section-label mono"><span>07</span> Recognition</p>
           <div>
             <h2 class="section-title" id="recognition-title">Awards &amp; <em>education.</em></h2>
           </div>
@@ -918,10 +1039,10 @@
     <!-- ================================================================
          CONTACT
          ================================================================ -->
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <section class="section panel contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact__card reveal">
-          <p class="section-label mono"><span>07</span> Contact</p>
+          <p class="section-label mono"><span>08</span> Contact</p>
           <h2 class="contact__title" id="contact-title">Let's build something<br class="br-lg"> <em>that moves.</em></h2>
           <p class="contact__text">Hiring for robotics, autonomy or perception, or have a hard problem that needs a robot? I'd love to hear about it.</p>
 
