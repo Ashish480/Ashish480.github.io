@@ -404,36 +404,55 @@ strong { font-weight: 600; color: var(--text); }
 .hero__robot {
   position: absolute;
   left: 50%;
-  bottom: 0;
-  width: min(620px, 52vw);
+  left: 59%;
+  bottom: clamp(60px, 9vh, 100px);
+  width: min(370px, 26vw);
   transform: translateX(-50%);
   z-index: 0;
 }
-.robot { display: block; width: 100%; height: auto; overflow: visible; }
+.hero-portrait {
+  position: relative;
+  margin: 0 auto;
+  width: 78%;
+  aspect-ratio: 3 / 4;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #1a1a1d;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9), 0 0 0 10px rgba(255, 255, 255, 0.025), 0 0 0 22px rgba(255, 255, 255, 0.015);
+}
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 20%;
+  filter: grayscale(1) contrast(1.08) brightness(0.92);
+  transform: scale(1.04);
+}
+.hero-portrait::after {
+  /* fade the bottom of the photo into the dark hero */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(11, 11, 13, 0.55) 85%, rgba(11, 11, 13, 0.85));
+  pointer-events: none;
+}
 .hero__floor {
   position: absolute;
   left: 10%;
   right: 10%;
-  bottom: -40px;
+  bottom: -30px;
   height: 80px;
   background: radial-gradient(closest-side, rgba(255, 255, 255, 0.08), transparent);
   filter: blur(8px);
 }
-.js .robot { animation: robot-rise 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
-.robot__head { transform-box: fill-box; transform-origin: 50% 90%; transition: transform 0.6s var(--ease); }
-.robot__eyes { animation: eye-blink 5.5s 2.6s infinite; transform-box: fill-box; transform-origin: center; }
-.robot__body { animation: robot-breathe 6s 2.5s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
-@keyframes robot-rise {
-  0% { transform: translateY(42%); opacity: 0; filter: brightness(0.3); }
-  40% { opacity: 1; }
+.js .hero-portrait { animation: portrait-rise 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+.js .hero-portrait img { animation: portrait-zoom 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+@keyframes portrait-rise {
+  0% { transform: translateY(18%); opacity: 0; filter: blur(8px); }
   100% { transform: none; opacity: 1; filter: none; }
 }
-@keyframes eye-blink {
-  0%, 92%, 100% { transform: scaleY(1); opacity: 1; }
-  94% { transform: scaleY(0.1); opacity: 0.6; }
-  96% { transform: scaleY(1); opacity: 1; }
-}
-@keyframes robot-breathe { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes portrait-zoom { from { transform: scale(1.18); } to { transform: scale(1.04); } }
 
 .hero__copy {
   position: absolute;
@@ -1447,7 +1466,7 @@ body::before { display: none; }
   .nav__toggle { display: inline-grid; }
   .nav.is-open .mobile-menu { display: block; }
   .hero__inner { display: flex; flex-direction: column; justify-content: flex-end; padding-top: 92px; padding-bottom: 40px; }
-  .hero__robot { position: relative; left: auto; bottom: auto; transform: none; width: min(460px, 78vw); margin: 0 auto -70px; }
+  .hero__robot { position: relative; left: auto !important; bottom: auto; transform: none; width: min(340px, 64vw); margin: 0 auto 28px; }
   .hero__aside { display: none; }
   .hero__copy { position: relative; left: auto; bottom: auto; right: auto; max-width: none; }
   .hero__title span { white-space: normal; }
@@ -1458,7 +1477,7 @@ body::before { display: none; }
   .core-row { gap: 18px 24px; }
   .nav { inset-block-start: 10px; }
   .hero__title { font-size: clamp(2rem, 9.4vw, 2.6rem); }
-  .hero__robot { width: 74vw; margin-bottom: -50px; }
+  .hero__robot { width: 66vw; margin-bottom: 24px; }
   .hero__scroll { display: none; }
   .about .creds { grid-template-columns: 1fr; }
   .about .creds li { border-left: 0 !important; }
