@@ -1639,3 +1639,7 @@ h1, h2, h3, h4,
 .role__title, .core__title, .lead-card h3, .mini__title, .award__title, .edu__degree, .skill-card__title { font-weight: 700; letter-spacing: 0; }
 .hero__title { letter-spacing: -0.015em; }
 .section-title, .contact__title { letter-spacing: -0.01em; }
+
+/* Hero headline in capitals */
+.hero__title { text-transform: uppercase; max-width: 15ch; font-size: clamp(2.3rem, 4.3vw, 3.9rem); letter-spacing: 0.01em; line-height: 1.06; }
+:root[data-font="antiqua"] .hero__title { font-size: clamp(2.1rem, 3.9vw, 3.5rem); }
