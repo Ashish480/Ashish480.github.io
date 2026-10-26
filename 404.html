@@ -18,7 +18,7 @@
       document.documentElement.setAttribute('data-theme', t);
       var a = null;
       try { a = localStorage.getItem('accent'); } catch (e) {}
-      if (a) document.documentElement.setAttribute('data-accent', a);
+      if (a && a !== 'cobalt' && a !== 'blue') document.documentElement.setAttribute('data-accent', a);
     })();
   </script>
   <style>

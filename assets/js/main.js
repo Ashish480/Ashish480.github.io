@@ -33,7 +33,7 @@
     var paletteMenu = palette.querySelector('.palette__menu');
     var choices = palette.querySelectorAll('[data-accent-choice]');
     var markChoice = function () {
-      var current = root.getAttribute('data-accent') || 'orange';
+      var current = root.getAttribute('data-accent') || 'cobalt';
       choices.forEach(function (c) { c.setAttribute('aria-checked', String(c.getAttribute('data-accent-choice') === current)); });
     };
     var setPalette = function (open) {
@@ -45,7 +45,7 @@
     choices.forEach(function (c) {
       c.addEventListener('click', function () {
         var accent = c.getAttribute('data-accent-choice');
-        if (accent === 'orange') root.removeAttribute('data-accent');
+        if (accent === 'cobalt') root.removeAttribute('data-accent');
         else root.setAttribute('data-accent', accent);
         try { localStorage.setItem('accent', accent); } catch (e) {}
         markChoice();
@@ -178,6 +178,23 @@
     });
   }
 
+  /* ---------- Project videos: play only while on screen ---------- */
+  var videos = document.querySelectorAll('.media video');
+  if (videos.length) {
+    if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+      videos.forEach(function (v) { v.controls = true; v.preload = 'metadata'; });
+    } else {
+      var videoObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target;
+          if (entry.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          else v.pause();
+        });
+      }, { threshold: 0.35 });
+      videos.forEach(function (v) { videoObserver.observe(v); });
+    }
+  }
+
   /* ---------- Copy email to clipboard ---------- */
   var toast = document.querySelector('[data-toast]');
   var toastTimer;
@@ -243,7 +260,7 @@
 
     function readColors() {
       var cs = getComputedStyle(root);
-      colors.accent = cs.getPropertyValue('--accent').trim() || '#ff6b2c';
+      colors.accent = cs.getPropertyValue('--accent').trim() || '#5b8cff';
       colors.dim = cs.getPropertyValue('--scan-dim').trim() || 'rgba(237,238,240,.16)';
     }
 
