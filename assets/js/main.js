@@ -211,38 +211,73 @@
      ========================================================================== */
   var hero = document.querySelector('.hero');
   var dust = document.querySelector('[data-dust]');
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  /* Starfield: twinkling stars drift upward; near the cursor they are pushed
+     away and linked with faint lines, like a constellation. */
   if (hero && dust && dust.getContext && !reduceMotion.matches) {
     var dctx = dust.getContext('2d');
-    var motes = [], dW = 0, dH = 0, dRunning = false;
+    var stars = [], dW = 0, dH = 0, dRunning = false;
+    var mouse = { x: -9999, y: -9999, active: false };
     var sizeDust = function () {
       var r = hero.getBoundingClientRect();
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       dW = r.width; dH = r.height;
       dust.width = Math.round(dW * dpr); dust.height = Math.round(dH * dpr);
       dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      motes = [];
-      var n = Math.round(Math.min(70, dW / 18));
+      stars = [];
+      var n = Math.round(Math.min(140, (dW * dH) / 9000));
       for (var i = 0; i < n; i++) {
-        motes.push({ x: Math.random() * dW, y: Math.random() * dH, r: Math.random() * 1.3 + 0.3,
-          vx: (Math.random() - 0.5) * 0.12, vy: -Math.random() * 0.18 - 0.03, a: Math.random() * 0.5 + 0.15 });
+        stars.push({ x: Math.random() * dW, y: Math.random() * dH, r: Math.random() * 1.2 + 0.3,
+          vx: (Math.random() - 0.5) * 0.1, vy: -Math.random() * 0.16 - 0.03,
+          a: Math.random() * 0.5 + 0.2, tw: Math.random() * Math.PI * 2, ox: 0, oy: 0 });
       }
     };
-    var drawDust = function () {
+    var drawDust = function (t) {
       if (!dRunning) return;
       dctx.clearRect(0, 0, dW, dH);
-      for (var i = 0; i < motes.length; i++) {
-        var m = motes[i];
+      var R = 140, near = [];
+      for (var i = 0; i < stars.length; i++) {
+        var m = stars[i];
         m.x += m.vx; m.y += m.vy;
         if (m.y < -5) { m.y = dH + 5; m.x = Math.random() * dW; }
         if (m.x < -5) m.x = dW + 5; else if (m.x > dW + 5) m.x = -5;
-        dctx.globalAlpha = m.a;
+        var tx = 0, ty = 0;
+        if (mouse.active) {
+          var dx = m.x - mouse.x, dy = m.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < R && d > 0.1) { var f = (1 - d / R) * 26; tx = dx / d * f; ty = dy / d * f; near.push(m); }
+        }
+        m.ox += (tx - m.ox) * 0.08; m.oy += (ty - m.oy) * 0.08;
+        var alpha = m.a * (0.65 + 0.35 * Math.sin(t / 900 + m.tw));
+        dctx.globalAlpha = alpha;
         dctx.fillStyle = '#ffffff';
-        dctx.beginPath(); dctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); dctx.fill();
+        dctx.beginPath(); dctx.arc(m.x + m.ox, m.y + m.oy, m.r, 0, Math.PI * 2); dctx.fill();
       }
+      if (near.length > 1) {
+        dctx.strokeStyle = '#ffffff';
+        dctx.lineWidth = 0.6;
+        for (var p = 0; p < near.length; p++) {
+          for (var q = p + 1; q < near.length; q++) {
+            var A = near[p], B = near[q];
+            var ax = A.x + A.ox, ay = A.y + A.oy, bx = B.x + B.ox, by = B.y + B.oy;
+            var dd = Math.hypot(ax - bx, ay - by);
+            if (dd < 90) {
+              dctx.globalAlpha = (1 - dd / 90) * 0.25;
+              dctx.beginPath(); dctx.moveTo(ax, ay); dctx.lineTo(bx, by); dctx.stroke();
+            }
+          }
+        }
+      }
+      dctx.globalAlpha = 1;
       requestAnimationFrame(drawDust);
     };
     sizeDust();
     window.addEventListener('resize', sizeDust);
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.active = true;
+    });
+    hero.addEventListener('pointerleave', function () { mouse.active = false; });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
         var vis = entries[0].isIntersecting;
@@ -250,6 +285,53 @@
         if (!vis) dRunning = false;
       }).observe(hero);
     } else { dRunning = true; requestAnimationFrame(drawDust); }
+  }
+
+  /* Hero: soft light that follows the cursor + 3D tilt on the portrait */
+  if (hero && finePointer && !reduceMotion.matches) {
+    var glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(glow);
+    var frame = hero.querySelector('.hero__portrait .portrait__frame');
+    hero.addEventListener('pointermove', function (e) {
+      glow.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
+      glow.classList.add('is-on');
+      if (frame) {
+        var r = frame.getBoundingClientRect();
+        var px = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
+        var py = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
+        frame.style.transform = 'perspective(900px) rotateY(' + (px * 10).toFixed(2) + 'deg) rotateX(' + (-py * 10).toFixed(2) + 'deg)';
+      }
+    });
+    hero.addEventListener('pointerleave', function () {
+      glow.classList.remove('is-on');
+      if (frame) frame.style.transform = '';
+    });
+  }
+
+  /* Magnetic buttons: they lean slightly toward the cursor */
+  if (finePointer && !reduceMotion.matches) {
+    document.querySelectorAll('.hero .btn, .contact__links .btn, .nav__resume').forEach(function (btn) {
+      btn.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) * 0.22;
+        var y = (e.clientY - r.top - r.height / 2) * 0.3;
+        btn.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      });
+      btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+    });
+
+    /* Cards tilt gently in 3D under the cursor */
+    document.querySelectorAll('.core, .lead-card, .mini').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(800px) rotateY(' + (px * 6).toFixed(2) + 'deg) rotateX(' + (-py * 6).toFixed(2) + 'deg)';
+      });
+      card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+    });
   }
 
   var head = document.querySelector('[data-robot-head]');

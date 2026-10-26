@@ -34,7 +34,7 @@
   <!-- ===== Fonts & styles ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <!-- Apply the saved light/dark theme before the page paints (prevents a flash) -->
@@ -44,9 +44,6 @@
       try { t = localStorage.getItem('theme'); } catch (e) {}
       t = 'dark';
       document.documentElement.setAttribute('data-theme', t);
-      // heading font for previewing: ?font=cambria | times | antiqua
-      var f = (location.search.match(/font=(cambria|times|antiqua)/) || [])[1];
-      if (f) document.documentElement.setAttribute('data-font', f);
       document.documentElement.classList.add('js');
       // safety net: if main.js fails to load, never leave content hidden
       setTimeout(function () { if (!window.__portfolioReady) document.documentElement.classList.remove('js'); }, 3000);
@@ -155,6 +152,7 @@
          HERO
          ================================================================ -->
     <section class="hero" id="top">
+      <canvas class="hero__dust" data-dust aria-hidden="true"></canvas>
       
       <div class="hero__inner">
         <figure class="portrait hero__portrait">
@@ -217,13 +215,13 @@
         <div class="about__side">
         <figure class="portrait portrait--team">
           <div class="portrait__frame">
-            <img src="assets/img/projects/equinox-team-hd.webp" alt="Team Equinox with their BAJA vehicle A12" width="1600" height="1067" loading="lazy">
+            <img src="assets/img/projects/equinox-team-hd.webp" alt="Team Equinox with their BAJA vehicle A12 in 2025" width="1600" height="1067" loading="lazy">
           </div>
           <span class="portrait__badge"><svg class="icon"><use href="#i-users"/></svg>Team Equinox</span>
           <figcaption class="portrait__card">
-            <span class="portrait__label mono">Led as captain</span>
-            <span class="portrait__title">Team Equinox · SAE aBAJA</span>
-            <span class="portrait__sub">Level-2 autonomous BAJA vehicle</span>
+            <span class="portrait__label mono">Team Equinox · aBAJA 2025</span>
+            <span class="portrait__title">Autonomous Head, A12 vehicle</span>
+            <span class="portrait__sub">Captain &amp; Autonomous Head in 2026</span>
           </figcaption>
         </figure>
         <ol class="approach" aria-label="How I work">
@@ -425,10 +423,18 @@
                 <figcaption class="media__cap">Team Equinox's BAJA vehicle on a night run</figcaption>
               </figure>
               <div class="media__row">
-                <button class="media" type="button" data-gallery="baja" data-caption="Team Equinox with the A12 vehicle at SAE BAJA India">
-                  <img src="assets/img/projects/equinox-team-hd.webp" alt="Team Equinox members posing with their BAJA vehicle, number A12" width="1600" height="1067" loading="lazy">
+                <button class="media" type="button" style="--ar: 3 / 4" data-gallery="baja" data-caption="aBAJA 2026: the A18 vehicle at the event, my season as Captain &amp; Autonomous Head">
+                  <img src="assets/img/projects/equinox-2026-a18.webp" alt="Team Equinox members around their red and black BAJA vehicle A18 at the 2026 event" width="1080" height="1440" loading="lazy">
+                  <span class="media__tag">2026 · Captain &amp; Autonomous Head</span>
                   <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
                 </button>
+                <button class="media" type="button" style="--ar: 3 / 4" data-gallery="baja" data-caption="aBAJA 2025: Team Equinox with the A12 vehicle, my season as Autonomous Head">
+                  <img src="assets/img/projects/equinox-team-hd.webp" alt="Team Equinox members posing with their BAJA vehicle, number A12, in 2025" width="1600" height="1067" loading="lazy">
+                  <span class="media__tag">2025 · Autonomous Head</span>
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+              </div>
+              <div class="media__row">
                 <figure class="media media--video">
                 <video src="assets/video/baja-build.mp4" poster="assets/video/baja-build.jpg" muted loop playsinline preload="none" aria-label="Building the chassis in the workshop"></video>
                 <figcaption class="media__cap">Building the chassis in the workshop</figcaption>
