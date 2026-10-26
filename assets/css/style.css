@@ -12,8 +12,8 @@
    Accent colours live in their own block below so any accent works with either theme. */
 :root {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --font-display: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Inter", ui-sans-serif, system-ui, sans-serif; --font-code: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
 
   --bg: #0a0a0a;
   --bg-alt: #0e0e0e;
@@ -1536,3 +1536,97 @@ h1, h2, h3, h4,
 .project__title, .now__title { font-weight: 700; letter-spacing: -0.03em; }
 .role__title, .core__title, .lead-card h3, .mini__title, .award__title, .edu__degree { font-weight: 700; letter-spacing: -0.02em; }
 .stats dt, .lead-stats dt { font-weight: 700; }
+
+/* ==========================================================================
+   Editorial refinement: serif headings, quieter details
+   ========================================================================== */
+body::after { display: none; }                         /* no film grain */
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+/* Headings: Source Serif 4 */
+h1, h2, h3, h4,
+.hero__title, .section-title, .contact__title, .project__title, .now__title,
+.role__title, .award__title, .edu__degree, .lead-card h3, .core__title,
+.mini__title, .more__title, .skill-card__title, .stats dt, .lead-stats dt, .award__rank {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+.brand { font-family: var(--font-sans); }
+.section-title, .contact__title { font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; }
+.section-title em, .contact__title em { font-family: var(--font-display); font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: var(--text-2); }
+.hero__title {
+  max-width: 13ch;
+  margin-top: 14px;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  word-spacing: normal;
+  text-transform: none;
+  text-shadow: none;
+}
+.project__title, .now__title { font-weight: 500; letter-spacing: -0.02em; }
+.role__title, .core__title, .lead-card h3, .mini__title, .award__title, .edu__degree, .skill-card__title { font-weight: 600; letter-spacing: -0.01em; }
+.stats dt, .lead-stats dt { font-weight: 500; letter-spacing: -0.02em; }
+.lead-stats dt { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: var(--text); }
+.award__rank { font-weight: 500; letter-spacing: -0.03em; color: var(--text); }
+.award__rank--mono { font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--text-2); }
+
+/* Hero text */
+.hero__name { margin-top: 0; color: #f5f5f5; font-size: 1rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.hero__badge { margin-top: 6px; padding: 0; border: 0; background: none; color: #9a9a9e; font-size: 0.92rem; }
+.hero__badge .status-dot { display: none; }
+.js .hero__copy > * , .js .hero__portrait, .js .hero__portrait .portrait__card { animation-duration: 0.9s; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes hero-portrait-in { from { opacity: 0; transform: translateY(-44%); } to { opacity: 1; transform: translateY(-46%); } }
+.hero { background: radial-gradient(70% 60% at 60% 35%, #1d1d20 0%, #111113 55%, #0b0b0c 100%); }
+
+/* Buttons: flat and solid instead of glossy */
+.btn--solid { background: #f5f5f5; color: #0a0a0a; border: 1px solid #f5f5f5; }
+.btn--solid:hover { background: #ffffff; transform: none; }
+.btn--glass { -webkit-backdrop-filter: none; backdrop-filter: none; background: transparent; }
+.btn--primary { background: var(--text); color: var(--bg); box-shadow: none; }
+.btn--primary:hover { transform: none; box-shadow: none; opacity: 0.88; }
+.panel--light .btn--solid { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
+
+/* Section labels: plain small caps, no numbered pills */
+.section-label {
+  padding: 0;
+  border: 0;
+  background: none !important;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+}
+.section-label span,
+.lead-card__num,
+.skill-card__title .mono,
+.project__index,
+.mobile-menu a .mono { display: none; }
+.project__meta span + span::before { display: none; }
+.project__meta { gap: 6px 14px; font-family: var(--font-sans); letter-spacing: 0.08em; font-size: 0.72rem; }
+.project__meta span:nth-child(2)::after { content: "·"; margin-left: 14px; color: var(--text-3); }
+
+/* Small text set in Inter rather than code-style mono */
+.mono, .tags li, .core__tags li, .chips li, .role__when, .creds__role, .media__cap,
+.portrait__label, .now__label, .now__status, .pipeline li::before, .edu__when, .mini__label, .langs dd {
+  font-family: var(--font-sans);
+}
+.tags li, .core__tags li { font-size: 0.75rem; letter-spacing: 0; }
+.role__when { font-size: 0.85rem; letter-spacing: 0; }
+.creds__role { font-size: 0.82rem; letter-spacing: 0; }
+.portrait__label, .now__label, .mini__label { letter-spacing: 0.1em; font-weight: 500; }
+
+/* Remove decorative status dots and recording indicators */
+.status-dot, .now__status .status-dot { display: none; }
+.media--video::after { display: none; }
+.now__status { font-size: 0.72rem; }
+
+/* Calmer cards: no lift, simple borders */
+.core:hover, .lead-card:hover, .award:hover, .approach__step:hover, .mini:has(a):hover { transform: none; box-shadow: none; }
+.core-row span { background: #0a0a0a; box-shadow: none; }
+.panel:not(.panel--light) { background: #111113; }
+.panel { border-radius: 24px; }
+.hero { border-radius: 24px; }
