@@ -1838,3 +1838,56 @@ figure.media--video { cursor: zoom-in; }
 .award__thumb { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; padding: 6px 14px 6px 6px; border: 1px solid var(--line-2); border-radius: 12px; background: transparent; color: var(--text); font-size: 0.85rem; cursor: zoom-in; transition: border-color 0.2s var(--ease); }
 .award__thumb:hover { border-color: var(--text-3); }
 .award__thumb img { width: 84px; height: 56px; object-fit: cover; border-radius: 8px; }
+
+/* ==========================================================================
+   Hero, reference layout: welcome label, "Hi, I'm …", typed role, tiles
+   ========================================================================== */
+.hero__copy--intro { top: 50%; bottom: auto; transform: translateY(-46%); max-width: 640px; }
+.hero__welcome { color: #a3a3a3; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; }
+.hero__copy--intro .hero__title { max-width: none; margin-top: 18px; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.12; text-transform: uppercase; letter-spacing: 0.01em; }
+.hero__hi, .hero__role { display: block; }
+.hero__hi strong { font-weight: 700; }
+.hero__role { margin-top: 6px; font-size: 0.78em; color: #d4d4d4; }
+.typed { font-weight: 700; color: #fff; }
+.typed__caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 6px; vertical-align: -0.08em; background: #f5f5f5; animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.hero__copy--intro .hero__lead { max-width: 54ch; margin-top: 20px; }
+.hero__copy--intro .hero__cta { margin-top: 24px; }
+.hero__rows { display: flex; flex-wrap: wrap; gap: 28px 64px; margin-top: 40px; }
+.hero__rowlabel { color: #a3a3a3; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+.tiles { display: flex; gap: 14px; margin-top: 14px; }
+.tiles li > * {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1d1d20, #121214);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.55), -4px -4px 12px rgba(255, 255, 255, 0.03);
+  color: #e5e5e5;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.tiles a:hover { transform: translateY(-3px); background: #f5f5f5; color: #0a0a0a; }
+.tiles .icon { width: 18px; height: 18px; }
+.tiles--text span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
+.tiles--text li:hover span { transform: translateY(-3px); }
+.hero__portrait { top: 52%; }
+.hero__portrait .portrait__frame { box-shadow: 14px 14px 40px rgba(0, 0, 0, 0.6), -8px -8px 24px rgba(255, 255, 255, 0.025); }
+@media (max-width: 960px) {
+  .hero__copy--intro { top: auto; transform: none; }
+  .hero__rows { gap: 22px 40px; margin-top: 30px; }
+}
+/* award photos */
+.award__thumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.award__thumbs .award__thumb { margin-top: 0; }
+.award__thumb--img { padding: 0; overflow: hidden; }
+.award__thumb--img img { width: 96px; height: 64px; border-radius: 11px; }
+.hero__title .hero__role .typed, .hero__title .hero__role .typed__caret { display: inline-block; white-space: nowrap; }
+.hero__title .hero__role { white-space: nowrap; min-height: 1.2em; }
+.hero__title .hero__hi { white-space: normal; }
+.hero__copy--intro { max-width: 760px; }
+.hero__copy--intro .hero__title { font-size: clamp(2rem, 3.5vw, 3.3rem); }
+.hero__title .hero__hi { white-space: nowrap; }
+@media (max-width: 1180px) { .hero__title .hero__hi { white-space: normal; } }
+@media (max-width: 640px) { .hero__copy--intro .hero__title .hero__role { font-size: 0.66em; } }

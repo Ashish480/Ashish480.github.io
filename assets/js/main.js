@@ -190,6 +190,23 @@
     }
   }
 
+  /* ---------- Typed roles in the hero ---------- */
+  var typed = document.querySelector('[data-typed]');
+  if (typed && !reduceMotion.matches) {
+    var words = typed.getAttribute('data-typed').split('|');
+    var w = 0, ch = words[0].length, deleting = true;
+    var tickType = function () {
+      var word = words[w];
+      typed.textContent = word.slice(0, ch);
+      var delay = deleting ? 45 : 85;
+      if (!deleting && ch === word.length) { deleting = true; delay = 1800; }
+      else if (deleting && ch === 0) { deleting = false; w = (w + 1) % words.length; delay = 300; }
+      else ch += deleting ? -1 : 1;
+      setTimeout(tickType, delay);
+    };
+    setTimeout(tickType, 2600);
+  }
+
   /* ---------- Copy email to clipboard ---------- */
   var toast = document.querySelector('[data-toast]');
   var toastTimer;

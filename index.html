@@ -171,23 +171,37 @@
           </figcaption>
         </figure>
 
-        <div class="hero__copy">
-          <p class="hero__name">Ashish Shajan</p>
-          <p class="hero__badge">Robotics Engineer · Project Manager · Entrepreneur</p>
-          <h1 class="hero__title">Building robots that work in the real world.</h1>
+        <div class="hero__copy hero__copy--intro">
+          <p class="hero__welcome">Welcome to my world</p>
+          <h1 class="hero__title">
+            <span class="hero__hi">Hi, I'm <strong>Ashish Shajan</strong></span>
+            <span class="hero__role">a <span class="typed" data-typed="Robotics Engineer.|Project Manager.|Entrepreneur.|CTO at AT Bots.">Robotics Engineer.</span><span class="typed__caret" aria-hidden="true"></span></span>
+          </h1>
+          <p class="hero__lead">I build autonomous drones, a Level-2 autonomous BAJA vehicle, legged robots and, right now, a semi-humanoid at AT Bots, and I run the teams, budgets and plans that get them shipped.</p>
           <div class="hero__cta">
             <a class="btn btn--solid" href="#work">View work</a>
             <a class="btn btn--glass" href="assets/Ashish_Shajan_Resume.pdf" download>Résumé <svg class="icon"><use href="#i-download"/></svg></a>
           </div>
-          <p class="hero__lead">Chief Technical Officer at AT Bots. I build autonomous drones, a Level-2 autonomous BAJA vehicle, legged robots and, right now, a semi-humanoid, and I run the teams, budgets and plans that get them shipped.</p>
-          <ul class="hero__social" aria-label="Profiles">
-            <li><a href="https://github.com/Ashish480" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon"><use href="#i-github"/></svg></a></li>
-            <li><a href="https://www.linkedin.com/in/ashish-shajan-65743a1b7/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a></li>
-            <li><a href="mailto:ashishshajan480@gmail.com" aria-label="Email"><svg class="icon"><use href="#i-mail"/></svg></a></li>
-          </ul>
+
+          <div class="hero__rows">
+            <div>
+              <p class="hero__rowlabel">Find with me</p>
+              <ul class="tiles" aria-label="Profiles">
+                <li><a href="https://www.linkedin.com/in/ashish-shajan-65743a1b7/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a></li>
+                <li><a href="https://github.com/Ashish480" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon"><use href="#i-github"/></svg></a></li>
+                <li><a href="mailto:ashishshajan480@gmail.com" aria-label="Email"><svg class="icon"><use href="#i-mail"/></svg></a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="hero__rowlabel">Best skill on</p>
+              <ul class="tiles tiles--text" aria-label="Top skills">
+                <li title="Robot Operating System 2"><span>ROS 2</span></li>
+                <li title="PX4 Autopilot"><span>PX4</span></li>
+                <li title="Simultaneous localization and mapping"><span>SLAM</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-
       </div>
     </section>
 
@@ -701,7 +715,7 @@
             <div class="project__body">
               <p class="project__meta mono"><span class="project__index">06</span><span>AI · IoT · Sustainability</span><span>2025</span></p>
               <h3 class="project__title">Carbon Bytes: AI Waste Segregation</h3>
-              <p class="project__org">Award-winning build — <strong>3rd place, Vruthi 2025 Wasteathon (₹25,000)</strong></p>
+              <p class="project__org">Award-winning build — <strong>3rd at Vruthi 2025 (₹25,000) and 3rd at HackS'US IV (₹15,000)</strong></p>
               <p class="project__summary">An end-to-end system that tackles poor waste segregation in India. Smart bins classify waste with computer vision, sort it automatically, and reward people for disposing of it properly.</p>
               <dl class="stats">
                 <div><dt>4</dt><dd>Waste classes: plastic, paper, organic, hazardous</dd></div>
@@ -1073,18 +1087,26 @@
             <p class="award__rank">3<sup>rd</sup></p>
             <div>
               <h3 class="award__title">Vruthi 2025 — Clean Kerala Conclave Wasteathon</h3>
-              <p class="award__text">Third place and ₹25,000 for an AI-powered waste-segregation solution. Shortlisted for the final round and pitched to an expert panel in Thiruvananthapuram, April 2025.</p>
+              <p class="award__text">Third place and ₹25,000 at the Government of Kerala's Clean Kerala Conclave for Carbon Bytes, our AI waste-segregation system. Shortlisted for the final round and pitched to an expert panel in Thiruvananthapuram, April 2025.</p>
             </div>
           </article>
           <article class="award reveal">
             <p class="award__rank">3<sup>rd</sup></p>
             <div>
               <h3 class="award__title">HackS'US Edition IV — Rajagiri School of Engineering &amp; Technology</h3>
-              <p class="award__text">Third prize at the national hackathon run by RSET's IEDC and Institution's Innovation Council, Kochi, 14–16 March 2025.</p>
+              <p class="award__text">Third prize and ₹15,000 at the 36-hour national hackathon run by RSET's IEDC and IIC, Kochi, March 2025, for our AI waste-segregation system (Carbon Bytes).</p>
+              <div class="award__thumbs">
+              <button class="award__thumb award__thumb--img" type="button" data-gallery="hacksus" data-caption="Receiving the third prize (₹15,000) at HackS'US Edition IV, RSET Kochi, with teammates Aswan A S, Muhammed Ajmal K and Tomin Michael">
+                <img src="assets/img/projects/hacksus-prize.webp" alt="Team receiving a prize cheque on stage at HackS'US" width="800" height="600" loading="lazy">
+              </button>
+              <button class="award__thumb award__thumb--img" type="button" data-gallery="hacksus" data-caption="Live demo: the waste-classification model detecting plastic during the 36-hour hackathon">
+                <img src="assets/img/projects/hacksus-demo.webp" alt="Screen recording of the waste detection model labelling a plastic item" width="800" height="449" loading="lazy">
+              </button>
               <button class="award__thumb" type="button" data-gallery="hacksus" data-caption="Certificate of appreciation: third prize, HackS'US Edition IV, RSET Kochi, March 2025">
                 <img src="assets/img/projects/hacksus-certificate.webp" alt="HackS'US Edition IV certificate of appreciation awarding third prize to Ashish Shajan" width="1400" height="991" loading="lazy">
                 <span>View certificate</span>
               </button>
+              </div>
             </div>
           </article>
           <article class="award reveal">
