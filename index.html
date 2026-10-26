@@ -124,6 +124,7 @@
         <a href="#core-skills">Skills</a>
         <a href="#work">Work</a>
         <a href="#leadership">Leadership</a>
+        <a href="#internships">Internships</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -141,6 +142,7 @@
         <a href="#core-skills"><span class="mono">03</span>Core skills</a>
         <a href="#work"><span class="mono">04</span>Selected work</a>
         <a href="#leadership"><span class="mono">05</span>Leadership</a>
+        <a href="#internships"><span class="mono">06</span>Internships</a>
         <a href="#recognition"><span class="mono">07</span>Recognition</a>
         <a href="#contact"><span class="mono">08</span>Contact</a>
         <a class="btn btn--solid" href="assets/Ashish_Shajan_Resume.pdf" target="_blank" rel="noopener">Download résumé <svg class="icon"><use href="#i-download"/></svg></a>
@@ -278,7 +280,7 @@
                 <li>Led system integration of the drone, PX4, ROS&nbsp;2 and ground station, and designed sensor integration and fusion (IMU, GNSS, LiDAR) for localization.</li>
                 <li>Lead the engineering team across robotics, embedded and AI, covering technical roadmap, code review, procurement and hardware/software integration.</li>
                 <li>Led technical integration of <strong>EduBot</strong>, AT Bots' AI-powered education and robotics product.</li>
-                <li>Leading development of AT Bots' semi-humanoid robot (in progress), shaped the MEDIVA medical-assistant concept, and mentor intern batches in ROS&nbsp;2 and AI/ML.</li>
+                <li>Leading development of AT Bots' semi-humanoid robot (in progress) and run the AT Bots internship program (two batches so far) in ROS&nbsp;2 and AI/ML.</li>
               </ul>
             </div>
           </li>
@@ -416,7 +418,7 @@
           <p class="section-label mono"><span>04</span> Selected work</p>
           <div>
             <h2 class="section-title" id="work-title">Autonomy, from simulation<br class="br-lg"> <em>to the real world.</em></h2>
-            <p class="section-intro">Seven flagship builds across ground, aerial, legged and service robotics. Each one went from model and simulation through integration and testing, with real hardware as the goal.</p>
+            <p class="section-intro">Flagship builds across legged, ground and aerial robotics, plus applied AI. Each one went from model and simulation through integration and testing, with real hardware as the goal.</p>
           </div>
         </header>
 
@@ -432,6 +434,54 @@
         </aside>
 
         <div class="projects">
+
+          <!-- ── Project 04 · Quadruped ────────────────────────── -->
+          <article class="project reveal" id="project-quadruped">
+            <div class="project__media">
+              <button class="media media--main" type="button" style="--ar: 4 / 5" data-gallery="quad" data-caption="The 12-DOF quadruped I built: 3D-printed body and legs with 12 servo-actuated joints">
+                <img src="assets/img/projects/quadruped-real.webp" alt="Orange 3D-printed four-legged robot dog with servo motors at each joint, standing on a tiled floor" width="900" height="1600" loading="lazy">
+                <span class="media__tag">Real hardware</span>
+                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </button>
+              <div class="media__row">
+              <figure tabindex="0" role="button" data-gallery="quad" data-caption="Trot gait running in simulation" class="media media--video">
+                <video src="assets/video/quadruped-walk.mp4" poster="assets/video/quadruped-walk.jpg" muted loop playsinline preload="none" aria-label="Trot gait running in simulation"></video>
+                <figcaption class="media__cap">Trot gait running in simulation</figcaption>
+                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+              </figure>
+                <button class="media" type="button" data-gallery="quad" data-caption="Quadruped in a Gazebo warehouse world">
+                  <img src="assets/img/projects/quadruped-warehouse.webp" alt="Yellow quadruped robot walking between warehouse shelves in Gazebo" width="1400" height="761" loading="lazy">
+                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project__body">
+              <p class="project__meta mono"><span class="project__index">04</span><span>Legged robotics · Flagship</span><span>2024 — 2025</span></p>
+              <h3 class="project__title">12-DOF Quadruped Robot: Locomotion from Simulation to Hardware</h3>
+              <p class="project__org">Main project — <strong>designed, built and programmed end to end</strong></p>
+              <p class="project__summary">My main project: a four-legged walking robot built from scratch. I designed the locomotion stack in ROS&nbsp;2, covering kinematics, gait generation and balance control, validated it in Isaac Sim and Gazebo, then brought it onto a real 3D-printed, servo-driven robot.</p>
+              <dl class="stats">
+                <div><dt>12</dt><dd>Actuated joints, 3 per leg</dd></div>
+                <div><dt>3</dt><dd>Controllers: stand, crawl, trot</dd></div>
+                <div><dt>Sim → Real</dt><dd>Isaac Sim / Gazebo to a physical robot</dd></div>
+              </dl>
+              <ul class="project__points">
+                <li><strong>Physical build:</strong> 3D-printed body and legs with 12 servo-actuated joints (3 per leg), wiring harness and onboard control electronics.</li>
+                <li><strong>Per-leg inverse kinematics</strong> and body transformations for precise foot-trajectory planning and stable stance control.</li>
+                <li><strong>Modular gait controllers</strong> (stand, crawl and trot) behind a state-command interface, with real-time joint synchronization through <strong>ros2_control</strong> and ramped joypad teleoperation.</li>
+                <li><strong>IMU-based PID stabilization</strong> for posture correction on uneven terrain, tuned to cut oscillation and save energy.</li>
+                <li>Robot modelled in xacro / URDF and exported to USD for <strong>NVIDIA Isaac Sim</strong>, where I analysed joint torques and stability margins. A MoveIt configuration supports leg motion planning.</li>
+              </ul>
+              <ul class="tags" aria-label="Technologies">
+                <li>ROS 2</li><li>3D printing</li><li>Servo control</li><li>ros2_control</li><li>Kinematics</li><li>Gait planning</li><li>IMU</li><li>Isaac Sim</li><li>Gazebo</li><li>MoveIt</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-arrow" href="https://github.com/Ashish480/quadruped-Isaacsim" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Isaac Sim quadruped <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+                <a class="link-arrow" href="https://github.com/Ashish480/moveitquadmini" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>MoveIt configuration <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
+            </div>
+          </article>
 
           <!-- ── Project 01 · BAJA ─────────────────────────────── -->
           <article class="project reveal" id="project-baja">
@@ -578,8 +628,8 @@
             <div class="project__body">
               <p class="project__meta mono"><span class="project__index">03</span><span>Aerial autonomy</span><span>2025</span></p>
               <h3 class="project__title">PX4 + ROS 2 Offboard Control &amp; GPS-Failsafe</h3>
-              <p class="project__org">Research internship, IIIT Hyderabad &amp; AT Bots — <strong>ROS 2 · PX4 · uXRCE-DDS</strong></p>
-              <p class="project__summary">A ROS&nbsp;2 workspace that flies a PX4 quadrotor in offboard mode from Python and studies how the vehicle behaves when a GPS-loss or Return-to-Launch failsafe triggers. This is the flight-software foundation behind AT Bots' inspection drones.</p>
+              <p class="project__org">Robotics Research Centre, IIIT Hyderabad — <strong>Research internship project</strong></p>
+              <p class="project__summary">A ROS&nbsp;2 workspace that flies a PX4 quadrotor in offboard mode from Python and studies how the vehicle behaves when a GPS-loss or Return-to-Launch failsafe triggers.</p>
               <dl class="stats">
                 <div><dt>FSM</dt><dd>Arm → take-off → offboard sequence</dd></div>
                 <div><dt>uXRCE</dt><dd>DDS bridge between PX4 and ROS&nbsp;2</dd></div>
@@ -589,7 +639,6 @@
                 <li><strong>Offboard control from Python:</strong> a finite-state machine arms the vehicle, takes off and switches to offboard, with keyboard teleoperation of body-frame velocity and yaw rate plus a scripted elliptical-orbit mode.</li>
                 <li><strong>GPS-failsafe experiments:</strong> two nodes inject GPS loss, push the vehicle into RTL or Hold, and log position, velocity and attitude to compare nominal and failure flights.</li>
                 <li><strong>Tooling:</strong> connection diagnostics for the uXRCE-DDS bridge, RViz2 visualisation of pose, path and setpoints, and one-command bring-up of the agent, PX4 SITL, QGroundControl and all nodes.</li>
-                <li>Sensor fusion (IMU, GNSS, LiDAR) for localization and obstacle avoidance carried into AT Bots' drone stack.</li>
               </ul>
               <ul class="tags" aria-label="Technologies">
                 <li>PX4</li><li>MAVROS</li><li>ROS 2</li><li>uXRCE-DDS</li><li>Gazebo</li><li>QGroundControl</li><li>Sensor fusion</li><li>C++</li>
@@ -600,51 +649,7 @@
             </div>
           </article>
 
-          <!-- ── Project 04 · Quadruped ────────────────────────── -->
-          <article class="project reveal" id="project-quadruped">
-            <div class="project__media">
-              <figure tabindex="0" role="button" data-gallery="quad" data-caption="Trot gait running in simulation" class="media media--video" style="--ar:  media--main">
-                <video src="assets/video/quadruped-walk.mp4" poster="assets/video/quadruped-walk.jpg" muted loop playsinline preload="none" aria-label="Trot gait running in simulation"></video>
-                <figcaption class="media__cap">Trot gait running in simulation</figcaption>
-                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
-              </figure>
-              <div class="media__row">
-                <button class="media" type="button" data-gallery="quad" data-caption="Quadruped in a Gazebo warehouse world">
-                  <img src="assets/img/projects/quadruped-warehouse.webp" alt="Yellow quadruped robot walking between warehouse shelves in Gazebo" width="1400" height="761" loading="lazy">
-                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
-                </button>
-                <button class="media" type="button" data-gallery="quad" data-caption="12-DOF robot model in RViz">
-                  <img src="assets/img/projects/quadruped-rviz.webp" alt="Quadruped robot model standing in RViz" width="525" height="640" loading="lazy">
-                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
-                </button>
-              </div>
-            </div>
 
-            <div class="project__body">
-              <p class="project__meta mono"><span class="project__index">04</span><span>Legged robotics</span><span>2024</span></p>
-              <h3 class="project__title">12-DOF Quadruped Locomotion</h3>
-              <p class="project__org">Academic project — <strong>ROS 2 · Isaac Sim · Gazebo</strong></p>
-              <p class="project__summary">A modular ROS&nbsp;2 locomotion framework for a 12-DOF quadruped. It covers kinematics, gait generation and balance control, and was validated in high-fidelity physics before moving to hardware.</p>
-              <dl class="stats">
-                <div><dt>12</dt><dd>Actuated joints, 3 per leg</dd></div>
-                <div><dt>3</dt><dd>Controllers: stand, crawl, trot</dd></div>
-                <div><dt>2</dt><dd>Simulators: Isaac Sim and Gazebo</dd></div>
-              </dl>
-              <ul class="project__points">
-                <li><strong>Per-leg inverse kinematics</strong> and body transformations for precise foot-trajectory planning and stable stance control.</li>
-                <li><strong>Modular gait controllers</strong> (stand, crawl and trot) behind a state-command interface, with real-time joint synchronization through <strong>ros2_control</strong> and ramped joypad teleoperation.</li>
-                <li><strong>IMU-based PID stabilization</strong> for posture correction on uneven terrain, tuned to cut oscillation and save energy.</li>
-                <li>Robot modelled in xacro / URDF and exported to USD for <strong>NVIDIA Isaac Sim</strong>, where I analysed joint torques and stability margins. A MoveIt configuration supports leg motion planning.</li>
-              </ul>
-              <ul class="tags" aria-label="Technologies">
-                <li>ROS 2</li><li>ros2_control</li><li>Kinematics</li><li>Gait planning</li><li>IMU</li><li>Isaac Sim</li><li>Gazebo</li><li>MoveIt</li>
-              </ul>
-              <div class="project__links">
-                <a class="link-arrow" href="https://github.com/Ashish480/quadruped-Isaacsim" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Isaac Sim quadruped <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
-                <a class="link-arrow" href="https://github.com/Ashish480/moveitquadmini" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>MoveIt configuration <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
-              </div>
-            </div>
-          </article>
 
           <!-- ── Project 05 · SLAM robot ───────────────────────── -->
           <article class="project reveal" id="project-slam">
@@ -717,46 +722,47 @@
             </div>
           </article>
 
-          <!-- ── Project 07 · MEDIVA ───────────────────────────── -->
-          <article class="project reveal" id="project-mediva">
+          <!-- ── Intel Unnati · Heart-attack prediction ───────── -->
+          <article class="project reveal" id="project-heart">
             <div class="project__media">
-              <button class="media media--main" type="button" data-gallery="mediva" data-caption="RTAB-Map 3D mapping run for MEDIVA's navigation stack">
-                <img src="assets/img/projects/mediva-rtabmap.webp" alt="RTAB-Map visualisation of a mapped indoor space" width="1200" height="553" loading="lazy">
-                <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
-              </button>
-              <div class="media__row">
-                <button class="media media--contain" type="button" style="--ar: 1 / 1" data-gallery="mediva" data-caption="Concept 1: mobile base with a manipulator arm, camera, UV lamp, vitals slot, display and storage">
-                  <img src="assets/img/projects/mediva-concept.webp" alt="Labelled concept sketch of a hospital robot with an arm, camera, UV lamp, vitals module, display and storage" width="1000" height="871" loading="lazy">
-                  <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
-                </button>
-                <div class="media media--note" style="--ar: 1 / 1">
-                  <p class="mono">Prototype V1 safety</p>
-                  <ul><li>ToF "virtual bumper" ring</li><li>Hardware E-stops</li><li>MCU heartbeat watchdog</li><li>FMEA-driven design</li></ul>
+              <div class="results">
+                <p class="results__label">Model results · logistic regression</p>
+                <div class="results__big"><span>86.8%</span><small>accuracy</small></div>
+                <dl class="results__grid">
+                  <div><dt>0.88</dt><dd>F1 score</dd></div>
+                  <div><dt>0.87</dt><dd>ROC-AUC</dd></div>
+                  <div><dt>303</dt><dd>patient records</dd></div>
+                  <div><dt>13</dt><dd>clinical features</dd></div>
+                </dl>
+                <div class="results__bars" aria-hidden="true">
+                  <span style="--v:.868"><b>Accuracy</b></span>
+                  <span style="--v:.88"><b>F1</b></span>
+                  <span style="--v:.87"><b>ROC-AUC</b></span>
                 </div>
               </div>
             </div>
 
             <div class="project__body">
-              <p class="project__meta mono"><span class="project__index">07</span><span>Service robotics · R&amp;D</span><span>2025</span></p>
-              <h3 class="project__title">MEDIVA: Autonomous Medical Assistant Robot</h3>
-              <p class="project__org">AT Bots — <strong>Concept, architecture &amp; prototype planning</strong></p>
-              <p class="project__summary">A robotic assistant that relieves overburdened hospital staff. It navigates wards on its own, checks patients' vitals and supports infection control. I worked on the concept from problem definition through the V1 prototype plan.</p>
-              <dl class="stats">
-                <div><dt>VSLAM</dt><dd>RTAB-Map 3D mapping and localization</dd></div>
-                <div><dt>3</dt><dd>Door-handling concepts evaluated</dd></div>
-                <div><dt>V1</dt><dd>Scoped MVP with budget and component plan</dd></div>
-              </dl>
+              <p class="project__meta mono"><span class="project__index">07</span><span>Machine learning · Intel Unnati</span><span>May — Jul 2024</span></p>
+              <h3 class="project__title">Heart-Attack Risk Prediction</h3>
+              <p class="project__org">Intel Unnati Industrial Training — <strong>selected for Intel's national program</strong></p>
+              <p class="project__summary">An end-to-end machine-learning pipeline on structured clinical data that predicts heart-attack risk and explains which factors matter most. I built it during Intel's Unnati industrial training program.</p>
               <ul class="project__points">
-                <li><strong>Navigation:</strong> RTAB-Map VSLAM with wheel-odometry + IMU fusion for dead-reckoning in featureless corridors. Nav2 handles global and local planning around people and carts.</li>
-                <li><strong>Engineering trade-offs:</strong> compared a 5-DOF door-opening arm, a linear push mechanism and integration with automatic doors, backed by nurse interviews across four countries and industry survey data.</li>
-                <li><strong>Vitals module:</strong> a hand-placement slot for SpO₂, temperature, heart rate and respiration, with alerts and auto-disinfection.</li>
-                <li><strong>Prototype planning:</strong> Jetson Orin Nano compute, T-slot chassis, LiFePO₄ power with BMS, MVP budget and component list.</li>
+                <li><strong>Data pipeline:</strong> cleaning, z-score outlier detection and exploratory analysis of 303 patient records with 13 clinical features (age, chest-pain type, cholesterol, max heart rate and more).</li>
+                <li><strong>Modelling:</strong> K-Means clustering to find patient groups, then decision-tree and logistic-regression classifiers, compared with proper validation.</li>
+                <li><strong>Results:</strong> logistic regression reached <strong>86.8% accuracy, F1 0.88 and ROC-AUC 0.87</strong>, with feature analysis that highlights the strongest risk indicators.</li>
+                <li>Presented findings and solution strategy to Intel mentors through structured reports and a demonstration.</li>
               </ul>
               <ul class="tags" aria-label="Technologies">
-                <li>ROS 2</li><li>RTAB-Map</li><li>VSLAM</li><li>Nav2</li><li>Jetson Orin Nano</li><li>Sensor fusion</li><li>FMEA</li><li>Product planning</li>
+                <li>Python</li><li>Pandas</li><li>scikit-learn</li><li>K-Means</li><li>Logistic regression</li><li>Matplotlib / Seaborn</li>
               </ul>
+              <div class="project__links">
+                <a class="link-arrow" href="https://github.com/Ashish480/Heartattackprediction" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Source code <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
             </div>
           </article>
+
+
         </div>
 
         <!-- ── More builds ────────────────────────────────────── -->
@@ -815,13 +821,6 @@
               <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
             </article>
             <article class="mini reveal">
-              <p class="mini__label mono">Machine learning · Intel Unnati</p>
-              <h4 class="mini__title"><a href="https://github.com/Ashish480/Heartattackprediction" target="_blank" rel="noopener">Heart-Attack Risk Prediction</a></h4>
-              <p class="mini__text">End-to-end ML on 303 patient records (13 clinical features): cleaning, z-score outlier detection, EDA, K-Means and classification. Logistic regression reached <strong>86.8% accuracy, F1 0.88, ROC-AUC 0.87</strong>.</p>
-              <ul class="tags tags--sm"><li>scikit-learn</li><li>Pandas</li><li>ML</li></ul>
-              <svg class="icon mini__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-            </article>
-            <article class="mini reveal">
               <p class="mini__label mono">Mini projects</p>
               <h4 class="mini__title">Manipulator, Self-Balancing &amp; Underwater Robots</h4>
               <p class="mini__text">A robot arm and a self-balancing platform on the NI roboRIO controller, plus an underwater surveillance system.</p>
@@ -866,7 +865,7 @@
           <article class="lead-card reveal">
             <p class="lead-card__num mono">03</p>
             <h3>Project planning &amp; delivery</h3>
-            <p>Roadmaps, milestones and sprint-style task tracking toward competition and client deadlines, with scope cut early (e.g. MEDIVA V1) so deadlines hold.</p>
+            <p>Roadmaps, milestones and sprint-style task tracking toward competition and client deadlines with scope cut early so deadlines hold.</p>
           </article>
           <article class="lead-card reveal">
             <p class="lead-card__num mono">04</p>
@@ -886,7 +885,7 @@
           <article class="lead-card reveal">
             <p class="lead-card__num mono">07</p>
             <h3>Entrepreneurship</h3>
-            <p>As CTO of an early-stage startup, I take products like EduBot and MEDIVA from problem definition and market research to MVP scope, budget and pitch.</p>
+            <p>As CTO of an early-stage startup, I take products like EduBot from problem definition and market research to MVP scope, budget and pitch.</p>
           </article>
           <article class="lead-card reveal">
             <p class="lead-card__num mono">08</p>
@@ -903,9 +902,55 @@
     </section>
 
     <!-- ================================================================
+         INTERNSHIPS I RUN
+         ================================================================ -->
+    <section class="section panel" id="internships" aria-labelledby="interns-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span>06</span> Internship program</p>
+          <div>
+            <h2 class="section-title" id="interns-title">Training the <em>next batch.</em></h2>
+            <p class="section-intro">At AT Bots I designed and run our robotics internship: hands-on ROS&nbsp;2 and AI/ML training where interns ship working code, not slides.</p>
+          </div>
+        </header>
+
+        <div class="batches">
+          <article class="batch reveal">
+            <p class="batch__tag">Batch 1 · May 2026</p>
+            <h3 class="batch__title">ROS 2 foundations</h3>
+            <p class="batch__text">First cohort. Interns learned the ROS&nbsp;2 basics by building them: workspaces, packages, C++ publisher/subscriber nodes and turtlesim control.</p>
+            <ul class="core__tags"><li>ROS 2</li><li>C++</li><li>Python</li><li>turtlesim</li></ul>
+            <a class="link-arrow" href="https://github.com/Ashish480/atbotsinterns" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Batch 1 workspace <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </article>
+          <article class="batch reveal">
+            <p class="batch__tag">AI / ML track · Jun 2026</p>
+            <h3 class="batch__title">Computer vision with YOLOv8</h3>
+            <p class="batch__text">The full ML workflow on a real task: frame extraction from video, labelling, dataset creation, YOLOv8 training and inference.</p>
+            <ul class="core__tags"><li>YOLOv8</li><li>OpenCV</li><li>Datasets</li><li>Training</li></ul>
+            <a class="link-arrow" href="https://github.com/Ashish480/Interns_AI_ML" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>AI/ML session material <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </article>
+          <article class="batch reveal">
+            <p class="batch__tag">Batch 2 · Jun 2026</p>
+            <h3 class="batch__title">Multi-node robot system</h3>
+            <p class="batch__text">Second cohort built a robot as cooperating ROS&nbsp;2 packages: a LiDAR node, a wheel controller that stops for obstacles, and an arm node that reacts to motion, all brought up with one launch file.</p>
+            <ul class="core__tags"><li>ROS 2</li><li>LaserScan</li><li>cmd_vel</li><li>Launch files</li></ul>
+            <a class="link-arrow" href="https://github.com/Ashish480/atbotsinterns2" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>Batch 2 workspace <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </article>
+        </div>
+
+        <ol class="batch-flow reveal" aria-label="How the program runs">
+          <li><b>Curriculum</b><span>I design the syllabus and starter code</span></li>
+          <li><b>Sessions</b><span>Hands-on teaching on real tools</span></li>
+          <li><b>Projects</b><span>Each intern builds and demos a working system</span></li>
+          <li><b>Review</b><span>Code review and feedback, then the next batch improves on it</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================================
          SKILLS
          ================================================================ -->
-    <section class="section panel" id="skills" aria-labelledby="skills-title">
+    <section class="section panel panel--light" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="section-label mono"><span>06</span> Toolkit</p>
@@ -977,7 +1022,7 @@
     <!-- ================================================================
          RECOGNITION & EDUCATION
          ================================================================ -->
-    <section class="section panel panel--light" id="recognition" aria-labelledby="recognition-title">
+    <section class="section panel" id="recognition" aria-labelledby="recognition-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="section-label mono"><span>07</span> Recognition</p>
@@ -1040,7 +1085,7 @@
     <!-- ================================================================
          CONTACT
          ================================================================ -->
-    <section class="section panel contact" id="contact" aria-labelledby="contact-title">
+    <section class="section panel panel--light contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact__card reveal">
           <p class="section-label mono"><span>08</span> Contact</p>
