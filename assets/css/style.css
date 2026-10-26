@@ -1485,3 +1485,41 @@ body::before { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .panel { transform: none; }
 }
+
+/* Hero portrait card (same layout as the About card) */
+.hero__portrait {
+  position: absolute;
+  right: clamp(20px, 5vw, 72px);
+  top: 50%;
+  width: min(420px, 32vw);
+  max-width: none;
+  margin: 0;
+  transform: translateY(-46%);
+  z-index: 1;
+}
+.hero__portrait .portrait__frame { border-color: rgba(255, 255, 255, 0.14); background: #1a1a1d; }
+.hero__portrait .portrait__card { background: rgba(20, 20, 22, 0.88); border-color: rgba(255, 255, 255, 0.14); color: #f5f5f5; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.hero__portrait .portrait__title { color: #f5f5f5; }
+.hero__portrait .portrait__label { color: #f5f5f5; }
+.hero__portrait .portrait__sub { color: #9a9a9e; }
+.hero__portrait::before { background: radial-gradient(closest-side, rgba(255, 255, 255, 0.08), transparent); }
+.js .hero__portrait { animation: hero-portrait-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+.js .hero__portrait .portrait__card { animation: hero-in 1s var(--ease) 1.4s both; }
+@keyframes hero-portrait-in {
+  from { opacity: 0; transform: translateY(-36%) scale(0.96); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(-46%); filter: none; }
+}
+.hero__lead { max-width: 46ch; margin-top: 26px; color: #8f8f93; font-size: 0.95rem; line-height: 1.6; }
+.hero__copy .hero__social { margin-top: 16px; }
+.js .hero__lead { animation-delay: 1.45s; }
+.js .hero__copy .hero__social { animation-delay: 1.6s; }
+
+/* About: team photo keeps its natural landscape crop */
+.portrait--team .portrait__frame { aspect-ratio: 4 / 3; }
+.portrait--team .portrait__frame img { filter: none; object-position: center; }
+
+@media (max-width: 960px) {
+  .hero__portrait { position: relative; right: auto; top: auto; width: min(360px, 76vw); margin: 0 auto 64px; transform: none; }
+  .js .hero__portrait { animation-name: hero-portrait-in-m; }
+  @keyframes hero-portrait-in-m { from { opacity: 0; transform: translateY(24px) scale(0.96); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+}
