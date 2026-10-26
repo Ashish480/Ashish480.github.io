@@ -1676,3 +1676,10 @@ h1, h2, h3, h4,
 .cursor-glow.is-on { opacity: 1; }
 .core, .lead-card, .mini { transition: transform 0.35s var(--ease), border-color 0.3s var(--ease); transform-style: preserve-3d; }
 @media (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-glow { display: none; } }
+
+/* Core skills 4-up, toolkit 3-up, extra copy */
+.core-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.about__entre { margin-top: 18px; max-width: 62ch; color: var(--text-2); font-size: 1.02rem; padding-left: 16px; border-left: 2px solid var(--text); }
+.edu__note { margin-top: 10px; color: var(--text-2); font-size: 0.92rem; }
+@media (max-width: 1080px) { .core-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .core-grid { grid-template-columns: 1fr; } }
