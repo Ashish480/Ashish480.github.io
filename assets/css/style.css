@@ -1813,3 +1813,24 @@ figure.media--video { cursor: zoom-in; }
   .batch-flow { grid-template-columns: 1fr; }
   .batch-flow li + li { border-left: 0; border-top: 1px solid var(--line); }
 }
+
+/* Featured achievement */
+.feature-award {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  margin-bottom: 14px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+}
+.feature-award__media { display: grid; gap: 10px; }
+.feature-award__kicker { width: fit-content; padding: 4px 12px; border-radius: 999px; background: var(--text); color: var(--bg); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.04em; }
+.feature-award__title { margin-top: 16px; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.08; }
+.feature-award__org { margin-top: 10px; color: var(--text-2); }
+.feature-award__text { margin-top: 16px; color: var(--text-2); }
+.feature-award .stats { margin-top: 20px; }
+.feature-award .link-arrow { margin-top: 20px; }
+@media (max-width: 960px) { .feature-award { grid-template-columns: 1fr; } }
