@@ -1847,9 +1847,3 @@ figure.media--video { cursor: zoom-in; }
 .hero__title .hero__role .typed, .hero__title .hero__role .typed__caret { display: inline-block; white-space: nowrap; }
 .hero__title .hero__role { white-space: nowrap; min-height: 1.2em; }
 .hero__title .hero__hi { white-space: normal; }
-
-/* Section headings in capitals */
-.section-title, .contact__title { text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.06; }
-.section-head .section-title { font-size: clamp(2.1rem, 4vw, 3.3rem); max-width: 18ch; }
-.section-title em, .contact__title em { font-style: normal; color: var(--text-2); }
-.contact__title { font-size: clamp(2.2rem, 5vw, 4rem); }
