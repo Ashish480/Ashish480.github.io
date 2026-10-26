@@ -106,15 +106,40 @@
     var group = [];
     var index = 0;
 
+    var lbVideo = lb.querySelector('.lightbox__video');
     function show(i) {
       index = (i + group.length) % group.length;
-      var btn = group[index];
-      var img = btn.querySelector('img');
-      lbImg.src = img.currentSrc || img.src;
-      lbImg.alt = img.alt;
-      lbText.textContent = btn.getAttribute('data-caption') || img.alt;
+      var item = group[index];
+      var vid = item.querySelector('video');
+      var img = item.querySelector('img');
+      if (vid) {
+        lbImg.hidden = true;
+        lbVideo.hidden = false;
+        lbVideo.src = vid.getAttribute('src');
+        lbVideo.poster = vid.getAttribute('poster') || '';
+        lbVideo.muted = false;
+        var pr = lbVideo.play(); if (pr && pr.catch) pr.catch(function () {});
+      } else {
+        lbVideo.pause(); lbVideo.hidden = true; lbVideo.removeAttribute('src');
+        lbImg.hidden = false;
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+      }
+      lbText.textContent = item.getAttribute('data-caption') || (img && img.alt) || '';
       lbCount.textContent = group.length > 1 ? (index + 1) + ' / ' + group.length : '';
     }
+    lb.querySelector('[data-lb-full]').addEventListener('click', function () {
+      var el = lbVideo.hidden ? lbImg : lbVideo;
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitEnterFullscreen) el.webkitEnterFullscreen();
+    });
+    lb.addEventListener('close', function () { lbVideo.pause(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var t = document.activeElement;
+      if (t && t.matches('figure[data-gallery]')) { e.preventDefault(); t.click(); }
+    });
 
     document.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-gallery]');

@@ -158,14 +158,14 @@
       
       <div class="hero__inner">
         <figure class="portrait hero__portrait">
-          <div class="portrait__frame">
-            <img src="assets/img/portrait.webp" alt="Portrait of Ashish Shajan" width="640" height="640" fetchpriority="high">
-          </div>
-          <span class="portrait__badge"><svg class="icon"><use href="#i-pin"/></svg>Kottayam, Kerala</span>
+          <button class="portrait__frame portrait__frame--wide" type="button" data-gallery="hero" data-caption="Team Equinox at aBAJA SAEINDIA 2026 with the A18 vehicle — the season I led as Captain, Autonomous Head and Finance Head">
+            <img src="assets/img/projects/equinox-2026-champions.webp" alt="Team Equinox, about thirty members in black and red team shirts, posing with the A18 BAJA vehicle at aBAJA SAEINDIA 2026" width="1440" height="810" fetchpriority="high">
+          </button>
+          <span class="portrait__badge"><svg class="icon"><use href="#i-users"/></svg>aBAJA SAEINDIA 2026</span>
           <figcaption class="portrait__card">
-            <span class="portrait__label mono">Currently building</span>
-            <span class="portrait__title">Semi-humanoid robot</span>
-            <span class="portrait__sub">AT Bots · in development</span>
+            <span class="portrait__label mono">Team Equinox · A18</span>
+            <span class="portrait__title">Captain, Autonomous Head &amp; Finance Head</span>
+            <span class="portrait__sub">Led this team through the 2026 season</span>
           </figcaption>
         </figure>
 
@@ -436,9 +436,10 @@
           <!-- ── Project 01 · BAJA ─────────────────────────────── -->
           <article class="project reveal" id="project-baja">
             <div class="project__media">
-              <figure class="media media--video">
+              <figure tabindex="0" role="button" data-gallery="baja" data-caption="Team Equinox's BAJA vehicle on a night run" class="media media--video">
                 <video src="assets/video/baja-run.mp4" poster="assets/video/baja-run.jpg" muted loop playsinline preload="none" aria-label="Team Equinox's BAJA vehicle on a night run"></video>
                 <figcaption class="media__cap">Team Equinox's BAJA vehicle on a night run</figcaption>
+                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
               </figure>
               <div class="media__row">
                 <button class="media" type="button" style="--ar: 3 / 4" data-gallery="baja" data-caption="aBAJA 2026: the A18 vehicle at the event, my season as Captain, Autonomous Head &amp; Finance Head">
@@ -453,9 +454,10 @@
                 </button>
               </div>
               <div class="media__row">
-                <figure class="media media--video">
+                <figure tabindex="0" role="button" data-gallery="baja" data-caption="Building the chassis in the workshop" class="media media--video">
                 <video src="assets/video/baja-build.mp4" poster="assets/video/baja-build.jpg" muted loop playsinline preload="none" aria-label="Building the chassis in the workshop"></video>
                 <figcaption class="media__cap">Building the chassis in the workshop</figcaption>
+                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
               </figure>
               </div>
               <div class="media__row">
@@ -463,9 +465,10 @@
                   <img src="assets/img/projects/carla-acc.webp" alt="CARLA simulation of adaptive cruise control with speed and following-distance readout" width="742" height="557" loading="lazy">
                   <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
                 </button>
-                <figure class="media media--video">
+                <figure tabindex="0" role="button" data-gallery="baja" data-caption="Lane keeping and traffic-light test in CARLA" class="media media--video">
                 <video src="assets/video/carla-drive.mp4" poster="assets/video/carla-drive.jpg" muted loop playsinline preload="none" aria-label="Lane keeping and traffic-light test in CARLA"></video>
                 <figcaption class="media__cap">Lane keeping and traffic-light test in CARLA</figcaption>
+                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
               </figure>
               </div>
             </div>
@@ -560,9 +563,10 @@
                 <span class="media__zoom" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
               </button>
               <div class="media__row">
-                <figure class="media media--video">
+                <figure tabindex="0" role="button" data-gallery="drone" data-caption="Quadrotor flying a scripted trajectory in simulation" class="media media--video">
                 <video src="assets/video/drone-sim.mp4" poster="assets/video/drone-sim.jpg" muted loop playsinline preload="none" aria-label="Quadrotor flying a scripted trajectory in simulation"></video>
                 <figcaption class="media__cap">Quadrotor flying a scripted trajectory in simulation</figcaption>
+                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
               </figure>
                 <button class="media" type="button" data-gallery="drone" data-caption="Offboard trajectory traced in RViz">
                   <img src="assets/img/projects/drone-trajectory.webp" alt="Green spiral flight path above a grid in RViz" width="670" height="660" loading="lazy">
@@ -599,9 +603,10 @@
           <!-- ── Project 04 · Quadruped ────────────────────────── -->
           <article class="project reveal" id="project-quadruped">
             <div class="project__media">
-              <figure class="media media--video" style="--ar:  media--main">
+              <figure tabindex="0" role="button" data-gallery="quad" data-caption="Trot gait running in simulation" class="media media--video" style="--ar:  media--main">
                 <video src="assets/video/quadruped-walk.mp4" poster="assets/video/quadruped-walk.jpg" muted loop playsinline preload="none" aria-label="Trot gait running in simulation"></video>
                 <figcaption class="media__cap">Trot gait running in simulation</figcaption>
+                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
               </figure>
               <div class="media__row">
                 <button class="media" type="button" data-gallery="quad" data-caption="Quadruped in a Gazebo warehouse world">
@@ -676,9 +681,10 @@
           <!-- ── Project 06 · Carbon Bytes ─────────────────────── -->
           <article class="project reveal" id="project-carbon">
             <div class="project__media project__media--duo">
-              <figure class="media media--video" style="--ar: 3 / 4">
+              <figure tabindex="0" role="button" data-gallery="carbon" data-caption="The smart bin prototype sorting waste" class="media media--video" style="--ar: 3 / 4">
                 <video src="assets/video/smart-bin.mp4" poster="assets/video/smart-bin.jpg" muted loop playsinline preload="none" aria-label="The smart bin prototype sorting waste"></video>
                 <figcaption class="media__cap">The smart bin prototype sorting waste</figcaption>
+                <span class="media__zoom media__zoom--video" aria-hidden="true"><svg class="icon"><use href="#i-expand"/></svg></span>
               </figure>
               <button class="media media--left" type="button" style="--ar: 3 / 4" data-gallery="carbon" data-caption="Carbon Bytes web app: recycling dashboard, smart-bin QR scanning and rewards">
                 <img src="assets/img/projects/carbon-bytes.webp" alt="Carbon Bytes web app home page reading 'Turn Your Waste Into Rewards' with impact statistics" width="1400" height="737" loading="lazy">
@@ -1072,14 +1078,16 @@
   </footer>
 
   <!-- Image viewer (opens when a project image is clicked) -->
-  <dialog class="lightbox" data-lightbox aria-label="Image viewer">
+  <dialog class="lightbox" data-lightbox aria-label="Media viewer">
     <figure class="lightbox__figure">
       <img class="lightbox__img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+      <video class="lightbox__video" controls playsinline loop hidden></video>
       <figcaption class="lightbox__caption">
         <span class="lightbox__text"></span>
         <span class="lightbox__count mono"></span>
       </figcaption>
     </figure>
+    <button class="icon-btn lightbox__btn lightbox__full" type="button" data-lb-full aria-label="Full screen"><svg class="icon"><use href="#i-expand"/></svg></button>
     <button class="icon-btn lightbox__btn lightbox__close" type="button" data-lb-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
     <button class="icon-btn lightbox__btn lightbox__prev" type="button" data-lb-prev aria-label="Previous image"><svg class="icon"><use href="#i-chevron-left"/></svg></button>
     <button class="icon-btn lightbox__btn lightbox__next" type="button" data-lb-next aria-label="Next image"><svg class="icon"><use href="#i-chevron-right"/></svg></button>

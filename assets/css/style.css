@@ -1683,3 +1683,33 @@ h1, h2, h3, h4,
 .edu__note { margin-top: 10px; color: var(--text-2); font-size: 0.92rem; }
 @media (max-width: 1080px) { .core-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .core-grid { grid-template-columns: 1fr; } }
+
+/* Hero: wide team photo */
+.hero__portrait { width: min(560px, 42vw); }
+.portrait__frame--wide { display: block; width: 100%; padding: 0; aspect-ratio: 16 / 10; cursor: zoom-in; }
+.portrait__frame--wide img { object-position: center 40%; filter: none !important; }
+.hero__portrait .portrait__card { max-width: 320px; }
+
+/* Videos open in the viewer too */
+figure.media--video { cursor: zoom-in; }
+.media__zoom--video { top: 10px; bottom: auto; }
+.media--video:hover .media__zoom, .media--video:focus-visible .media__zoom { opacity: 1; transform: none; }
+.media--video video { transition: transform 0.7s var(--ease); }
+.media--video:hover video { transform: scale(1.035); }
+.lightbox__video { max-width: 100%; max-height: calc(100dvh - 160px); margin-inline: auto; border-radius: 12px; background: #000; }
+.lightbox__full { top: 18px; right: 70px; }
+.lightbox__img:fullscreen, .lightbox__video:fullscreen { max-height: none; border-radius: 0; object-fit: contain; background: #000; }
+
+/* Hover: media lifts and brightens as you approach */
+.media { transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.media:hover { transform: translateY(-3px); box-shadow: 0 24px 50px -28px rgba(0, 0, 0, 0.6); }
+.project__media .media img, .project__media .media video { filter: saturate(0.92) brightness(0.96); transition: transform 0.7s var(--ease), filter 0.4s var(--ease); }
+.project__media .media:hover img, .project__media .media:hover video { filter: none; }
+
+@media (max-width: 960px) { .hero__portrait { width: min(520px, 90vw); } }
+.hero__portrait .portrait__card { left: -24px; bottom: -54px; max-width: 290px; padding: 12px 16px; }
+.hero__portrait .portrait__title { font-size: 0.95rem; }
+@media (max-width: 960px) {
+  .hero__portrait { margin-bottom: 28px; }
+  .hero__portrait .portrait__card { position: static; margin-top: 10px; max-width: none; }
+}
