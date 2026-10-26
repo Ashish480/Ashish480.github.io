@@ -261,7 +261,7 @@
     var drawDust = function (t) {
       if (!dRunning) return;
       dctx.clearRect(0, 0, dW, dH);
-      var R = 140, near = [];
+      var R = 100, near = [];
       for (var i = 0; i < stars.length; i++) {
         var m = stars[i];
         m.x += m.vx; m.y += m.vy;
@@ -270,7 +270,7 @@
         var tx = 0, ty = 0;
         if (mouse.active) {
           var dx = m.x - mouse.x, dy = m.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
-          if (d < R && d > 0.1) { var f = (1 - d / R) * 26; tx = dx / d * f; ty = dy / d * f; near.push(m); }
+          if (d < R && d > 0.1) { var f = (1 - d / R) * 13; tx = dx / d * f; ty = dy / d * f; near.push(m); }
         }
         m.ox += (tx - m.ox) * 0.08; m.oy += (ty - m.oy) * 0.08;
         var alpha = m.a * (0.65 + 0.35 * Math.sin(t / 900 + m.tw));
@@ -286,8 +286,8 @@
             var A = near[p], B = near[q];
             var ax = A.x + A.ox, ay = A.y + A.oy, bx = B.x + B.ox, by = B.y + B.oy;
             var dd = Math.hypot(ax - bx, ay - by);
-            if (dd < 90) {
-              dctx.globalAlpha = (1 - dd / 90) * 0.25;
+            if (dd < 70) {
+              dctx.globalAlpha = (1 - dd / 70) * 0.12;
               dctx.beginPath(); dctx.moveTo(ax, ay); dctx.lineTo(bx, by); dctx.stroke();
             }
           }

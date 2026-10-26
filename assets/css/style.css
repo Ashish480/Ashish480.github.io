@@ -1664,11 +1664,11 @@ h1, h2, h3, h4,
   left: 0;
   top: 0;
   z-index: 1;
-  width: 480px;
-  height: 480px;
-  margin: -240px 0 0 -240px;
+  width: 360px;
+  height: 360px;
+  margin: -180px 0 0 -180px;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.05), transparent);
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.025), transparent);
   pointer-events: none;
   transition: opacity 0.4s;
   opacity: 0;
@@ -1713,3 +1713,44 @@ figure.media--video { cursor: zoom-in; }
   .hero__portrait { margin-bottom: 28px; }
   .hero__portrait .portrait__card { position: static; margin-top: 10px; max-width: none; }
 }
+.hero__portrait { width: min(420px, 32vw); }
+@media (max-width: 960px) { .hero__portrait { width: min(360px, 76vw); } }
+.portrait--team .portrait__frame { display: block; width: 100%; padding: 0; aspect-ratio: 16 / 10; cursor: zoom-in; }
+
+/* ==========================================================================
+   Section headings: editorial "report" layout
+   Label + hairline rule across the page, then title (left) and intro (right)
+   ========================================================================== */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin: 0 0 28px;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.section-label::after { content: ""; flex: 1; height: 1px; background: var(--line-2); }
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  gap: 18px 64px;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.section-head > .section-label { grid-column: 1 / -1; margin-bottom: 10px; }
+.section-head > div { display: contents; }
+.section-head .section-title { max-width: 16ch; font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: 1.02; }
+.section-head .section-intro { margin: 0 0 0.45em; max-width: 46ch; justify-self: end; color: var(--text-2); }
+.section-head--center { display: block; text-align: center; }
+.section-head--center .section-label::before { content: ""; flex: 1; height: 1px; background: var(--line-2); }
+.section-head--center .section-intro { margin: 16px auto 0; justify-self: auto; }
+.about .section-label { margin-bottom: 22px; }
+.contact__card .section-label { margin-bottom: 20px; }
+@media (max-width: 960px) {
+  .section-head { grid-template-columns: 1fr; gap: 14px; }
+  .section-head .section-intro { justify-self: start; }
+}
+.section-head--center .section-title { max-width: none; }
