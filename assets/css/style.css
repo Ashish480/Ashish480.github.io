@@ -11,9 +11,9 @@
 /* Base palette: dark is the default, light overrides it.
    Accent colours live in their own block below so any accent works with either theme. */
 :root {
-  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --font-serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --bg: #0a0a0a;
   --bg-alt: #0e0e0e;
@@ -648,12 +648,11 @@ strong { font-weight: 600; color: var(--text); }
 .section-label span { color: var(--accent); }
 .section-title em,
 .contact__title em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.08em;
-  letter-spacing: -0.01em;
-  color: var(--accent);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: var(--text-2);
 }
 .section-title {
   max-width: 20ch;
@@ -1397,7 +1396,7 @@ body::before { display: none; }
 .section-head--center .section-title,
 .section-head--center .section-intro { margin-inline: auto; }
 .section-head--center .section-label { margin-bottom: 18px; }
-.section-title em, .contact__title em { color: inherit; opacity: 0.7; }
+.section-title em, .contact__title em { color: var(--text-2); opacity: 1; }
 
 /* About: text + portrait */
 .about__side { display: grid; gap: 14px; }
@@ -1523,3 +1522,17 @@ body::before { display: none; }
   .js .hero__portrait { animation-name: hero-portrait-in-m; }
   @keyframes hero-portrait-in-m { from { opacity: 0; transform: translateY(24px) scale(0.96); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
 }
+
+/* Typography: Manrope for display, Inter for text */
+body { font-feature-settings: "cv11", "ss01"; }
+h1, h2, h3, h4,
+.hero__title, .section-title, .contact__title, .project__title, .now__title,
+.role__title, .award__rank, .award__title, .edu__degree, .lead-card h3, .core__title,
+.mini__title, .more__title, .skill-card__title, .stats dt, .lead-stats dt, .brand {
+  font-family: var(--font-display);
+}
+.section-title, .contact__title { font-weight: 700; letter-spacing: -0.035em; }
+.hero__title { font-weight: 400; letter-spacing: -0.01em; word-spacing: 0.04em; }
+.project__title, .now__title { font-weight: 700; letter-spacing: -0.03em; }
+.role__title, .core__title, .lead-card h3, .mini__title, .award__title, .edu__degree { font-weight: 700; letter-spacing: -0.02em; }
+.stats dt, .lead-stats dt { font-weight: 700; }
